@@ -1,0 +1,51 @@
+{
+  "name": "COVID-19-Dashboard",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": ".\\node_modules\\.bin\\webpack",
+    "builddev": "cross-env NODE_ENV=development .//node_modules//.bin//webpack-dev-server --progress --colors --history-api-fallback",
+    "buildprod": "cross-env NODE_ENV=production .//node_modules//.bin//webpack --progress",
+    "livebuild": ".\\node_modules\\.bin\\webpack-dev-server --progress --colors --history-api-fallback",
+    "start": ".\\node_modules\\.bin\\lite-server"
+  },
+  "keywords": [
+    "COVID-19"
+  ],
+  "author": "Maria Riazanova",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "leaflet": "^1.7.1"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-jest": "^21.2.0",
+    "babel-loader": "^7.1.2",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "copy-webpack-plugin": "^5.1.1",
+    "cross-env": "^5.1.5",
+    "css-loader": "^0.28.7",
+    "enzyme": "^3.8.0",
+    "enzyme-adapter-react-16": "^1.7.1",
+    "enzyme-to-json": "^3.3.5",
+    "eslint": "^6.6.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-config-prettier": "^6.5.0",
+    "eslint-loader": "^3.0.2",
+    "eslint-plugin-import": "^2.18.2",
+    "extract-text-webpack-plugin": "^3.0.2",
+    "file-loader": "^5.0.2",
+    "jest": "^21.2.1",
+    "lite-server": "^2.4.0",
+    "react-test-renderer": "^16.1.1",
+    "style-loader": "^0.19.0",
+    "webpack": "^3.12.0",
+    "webpack-config": "^7.5.0",
+    "webpack-dev-server": "^2.11.5"
+  }
+}
