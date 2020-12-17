@@ -1,4 +1,10 @@
 #map { 
     height: 580px; 
+    width: 100%;
+}
+.legend img{
+    margin: 5px 0;
+
+    
 }
 /*# sourceMappingURL=bundle.css.map*/
