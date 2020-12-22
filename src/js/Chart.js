@@ -1,4 +1,4 @@
-import Chart from "chart.js";
+import ChartJS from "chart.js";
 class Chart {
     constructor() {
         this.canvas = document.createElement("canvas");
@@ -7,7 +7,7 @@ class Chart {
     }
 
     createChart(x, y) {
-      this.chart = new Chart(this.ctx, {
+      this.chart = new ChartJS(this.ctx, {
           type: "bar",
           data: {
               labels: x,
@@ -19,16 +19,8 @@ class Chart {
                   },
               ],
           },
-      })   
-      const chart = new Chart()
-      chart.createChart(
-          ["January","February","March","April","May","June","July","August","September","October","November","December"],
-          [50, 100, 200, 300, 400, 500, 550, 350, 480, 500, 600, 150]
-      )
-    
-
-
-
+      })  
+    }
 }
 
 export default Chart;
