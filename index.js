@@ -9,7 +9,7 @@ import map from './src/js/Map';
 import General from './src/js/General';
 import list from './src/js/List';
 import table from './src/js/Table';
-import Chart from './src/js/Chart';
+import chart from './src/js/Chart';
 import CloseButton from './src/js/CloseButton';
 
 
@@ -29,6 +29,8 @@ Data.getData().then(result => {
     General.createGeneral(result);
 
     list.createList(result);
+
+    chart.createChart();
 
     document.getElementById('control__panel').addEventListener('click', (event) => map.changeMap(result, event));
     document.getElementById('close__button1').addEventListener('click', (event) => map.resizeMap(result, event));

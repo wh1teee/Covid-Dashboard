@@ -45,9 +45,9 @@ class List {
     }
 
     
-    renderTable(chooseSelector = 'TotalConfirmed') {
+    renderTable(chooseSelector) {
         const dom = DOMLinks.getHTMLElements(); 
-        dom.statistic.innerHTML = ''
+        dom.statistic.innerHTML = '';
         if (chooseSelector === 'TotalConfirmed') {
             allData.forEach((item) => {
                 dom.statistic.insertAdjacentHTML('beforeEnd', `
@@ -113,7 +113,7 @@ class List {
         const selectHeader = document.querySelectorAll('.select__header');
         const selectItem = document.querySelectorAll('.select__item');
     
-        function selectToggle() {
+    /*    function selectToggle() {
             this.parentElement.classList.toggle('is-active');
         }
     
@@ -124,17 +124,30 @@ class List {
             currentText.innerText = text;
             select.classList.remove('is-active');
     
-            currentChoosingStatistic = text
-            sortingData(text) // sorting by selected parameter in drop-down list
-            this.renderTable(text) // render sorted country statistic array
+            currentChoosingStatistic = text;
+            sortingData(text); // sorting by selected parameter in drop-down list
+            this.renderTable(text); // render sorted country statistic array
         }
-    
+    */
         selectHeader.forEach(item => {
-            item.addEventListener('click', selectToggle)
+            item.addEventListener('click', function(){
+                this.parentElement.classList.toggle('is-active')
+            });
         });
     
         selectItem.forEach(item => {
-            item.addEventListener('click', selectChoose)
+            item.addEventListener('click', function(){
+                const text = this.innerText;
+                const select = this.closest('.select');
+                const currentText = select.querySelector('.select__current');
+                currentText.innerText = text;
+                select.classList.remove('is-active');
+        
+                currentChoosingStatistic = text;
+                console.log(text);
+                sortingData(text); // sorting by selected parameter in drop-down list
+                this.renderTable(text); // render sorted country statistic array
+            });
         });
     
     };

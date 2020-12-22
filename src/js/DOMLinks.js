@@ -25,6 +25,7 @@ class DOMLinks {
             dataList: document.getElementById('countries'),
             closeButton1: document.getElementById('close__button-1'),
             statistic: document.querySelector('.statistic'),
+            chart: document.getElementById('chart4'),
             
         };
     }
