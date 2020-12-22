@@ -6,7 +6,7 @@ html {
     font-size: 10px;
 }
 
-#container {
+/*#container {
     font-size: 2.3rem;
     max-width: 130vw;
     margin: 0 auto;
@@ -14,7 +14,7 @@ html {
     flex-direction: column;
     
 }
-
+*/
 header {
     text-align: center;
     padding: 1rem;
@@ -75,6 +75,7 @@ main {
 }
 
 #general0 {
+    font-size: 2.3rem;
     color: red;
     font-weight: 600;
     text-align: center;

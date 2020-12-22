@@ -1,27 +1,19 @@
 import './src/css/style.css';
-import L from 'leaflet';
+import './src/css/table.css';
+
+// import L from 'leaflet';
 import Data from './src/js/Data';
 
-import dom from './src/js/DOM';
+import createDOM from './src/js/DOM';
 import map from './src/js/Map';
-import General0 from './src/js/General0';
+import General from './src/js/General';
 import list from './src/js/List';
 import table from './src/js/Table';
 import Chart from './src/js/Chart';
 import CloseButton from './src/js/CloseButton';
 
 
-dom.createDOM();
-
-/*
-async function getData(){
-    const infoCOVID = await fetch('https://api.covid19api.com/summary');
-    const infoCountries = await fetch('https://restcountries.eu/rest/v2/all');
-    const resultCOVID = await infoCOVID.json();
-    const resultCountries = await infoCountries.json();
-    return { resultCOVID, resultCountries };
-}
-*/
+createDOM();
 
 Data.getData();
 
@@ -29,13 +21,14 @@ Data.getData().then(result => {
     console.log(result);
     map.createMap(51.505, -0.09, 2);
     map.getData(result, '1');
+  //  map.showGeoJSON();
 
     CloseButton.createCloseButton('1', document.getElementById('map3'));
  
-
-
     table.getData(result, 'World', '1');
-    General0.createGeneral0(result);
+    General.createGeneral(result);
+
+    list.createList(result);
 
     document.getElementById('control__panel').addEventListener('click', (event) => map.changeMap(result, event));
     document.getElementById('close__button1').addEventListener('click', (event) => map.resizeMap(result, event));
