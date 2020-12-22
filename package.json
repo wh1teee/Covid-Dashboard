@@ -19,6 +19,7 @@
     "babel-plugin-transform-runtime": "^6.23.0",
     "cors": "2.8.5",
     "leaflet": "1.7.1",
+    "leaflet.tilelayer.colorfilter": "^1.2.5",
     "regenerator-runtime": "0.13.7"
   },
   "devDependencies": {

@@ -1,82 +1,80 @@
 import './src/css/style.css';
 import L from 'leaflet';
-// import Data from './src/js/Data';
+import Data from './src/js/Data';
 
-
-import Map from './src/js/Map';
-import Table from './src/js/Table';
+import dom from './src/js/DOM';
+import map from './src/js/Map';
+import General0 from './src/js/General0';
+import list from './src/js/List';
+import table from './src/js/Table';
 import Chart from './src/js/Chart';
-
-const map = new Map(51.505, -0.09, 2, true);
-map.createMap();
+import CloseButton from './src/js/CloseButton';
 
 
-
-
-// console.log(obj);
-/*
-getData().then(result => {
-    console.log(result);
-    return result;
-    }
-)
-*/
-
-
-// Data.getCountriesData();
-// Data.getAPIData();
-
-//Data2.getData();
-//Data2.getInfoData();
+dom.createDOM();
 
 /*
-
 async function getData(){
-    let stat = await fetch('https://api.covid19api.com/summary');
-    let stat2 = await fetch('https://restcountries.eu/rest/v2/all');
-    let com = await stat.json();
-    let com2 = await stat2.json();
-    return { com, com2 };
+    const infoCOVID = await fetch('https://api.covid19api.com/summary');
+    const infoCountries = await fetch('https://restcountries.eu/rest/v2/all');
+    const resultCOVID = await infoCOVID.json();
+    const resultCountries = await infoCountries.json();
+    return { resultCOVID, resultCountries };
 }
-
-
-getData().then(result => {
-    console.log(result);
-    result.com.Countries.forEach(element => {
-        console.log('1');
-        const country = result.com2.find(item => item.alpha2Code === element.CountryCode);
-        console.log(country);
-     //   console.log(element.name, element.alpha2Code, element.latlng);
-     //   console.log(result.com.Countries.find(item => item.CountryCode === element.alpha2Code));
-        if (element.CountryCode === country.alpha2Code ) {
-            console.log(element.Country, element.CountryCode, country.latlng);
-            const circleCenter = country.latlng;
-            console.log(circleCenter);
-            const circleOptions = {
-                color: 'red',
-                fill: 'true',
-                fillColor: '#f03',
-                fillOpacity: 0.5
-            };
-            const circleRadius = element.TotalConfirmed;
-            console.log(element.TotalConfirmed);
-            console.log(circleRadius);
-
-            const circle = L.circle(circleCenter, circleRadius, circleOptions);
-            circle.bindPopup(`${element.Country}\n${element.TotalConfined}`);
-            circle.addTo(map);
-            console.log('circle');
-        }
-    });
-})
-    
-
 */
-/*
-import cors from 'cors';
 
-const server = express();
-server.use(cors());
+Data.getData();
+
+Data.getData().then(result => {
+    console.log(result);
+    map.createMap(51.505, -0.09, 2);
+    map.getData(result, '1');
+
+    CloseButton.createCloseButton('1', document.getElementById('map3'));
+ 
+
+
+    table.getData(result, 'World', '1');
+    General0.createGeneral0(result);
+
+    document.getElementById('control__panel').addEventListener('click', (event) => map.changeMap(result, event));
+    document.getElementById('close__button1').addEventListener('click', (event) => map.resizeMap(result, event));
+
+    document.getElementById('table__controlpanel').addEventListener('click', (event) => table.changeTable(result, event));
+
+    document.getElementById('checkbox').addEventListener('change', (event) => table.changeCheckBox(result, event.target.value));
+    document.getElementById('clear').addEventListener('click', (event) => table.clearCountryName(result, event));    
+
+
+})
+
+
+
+
+
+
+
+
+
+/*
+
+list.getData(1);
+
+table.getData('World', '1');
+
+
+map.createMap(51.505, -0.09, 2);
+map.getData(1);
+
+
+document.getElementById('control__panel').addEventListener('click', (event) => map.changeMap(event));
+
+
+document.getElementById('table__controlpanel').addEventListener('click', (event) => table.changeTable(event));
+
+document.getElementById('checkbox').addEventListener('change', (event) => table.changeCheckBox(event.target.value));
+document.getElementById('clear').addEventListener('click', (event) => table.clearCountryName(event));    
+
 */
 
 
