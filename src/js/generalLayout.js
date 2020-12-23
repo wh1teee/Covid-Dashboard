@@ -10,7 +10,9 @@ document.body.innerHTML = `
 <main class="main">
         <section id='aside-left'>
           <div id='window0'></div>
-          <div id='list2' class="table"></div>
+          <div id='list2' class="table">
+          <button class="full__screen__btn"></button>
+         </div>
         </section>
         
         <section id="map"></section>
