@@ -4,8 +4,8 @@ import Data from './Data';
 import DOMLinks from './DOMLinks';
 import table from './Table';
 import CloseButton from './CloseButton';
-import * as geoData from './geoJSON.json';
-import * as geoData2 from './geoJSON2.json';
+// import * as geoData from './geoJSON.json';
+import * as geoData from './geoJSON2.json';
 // import geoJSON from '../geoJSON.js'
 // import dataz from './DataFunction';
 
@@ -49,8 +49,8 @@ class Map{
        
         layer.addTo(this.map);
 
-        console.log(geoData);
-        console.log(geoData2);
+      
+      //  console.log(geoData);
 
 
         const myStyle = { 
@@ -59,7 +59,7 @@ class Map{
             opacity: 1,
         };
 
-        const geojsonLayer = new L.GeoJSON(geoData2, {
+        const geojsonLayer = new L.GeoJSON(geoData, {
             style: myStyle,
             onEachFeature: function (f, l) {
             //  l.bindPopup(`${f.properties.admin}`);
@@ -89,7 +89,7 @@ class Map{
         };
 
 
-        this.geojsonLayer = new L.GeoJSON(geoData2, {
+        this.geojsonLayer = new L.GeoJSON(geoData, {
             style: myStyle,
             onEachFeature: function (f, l) {
             //   l.bindPopup(`${f.properties.admin}`); // `${element.Country}<br> ${text}: ${variableToShow}`
@@ -196,7 +196,7 @@ class Map{
                         case '12':
                             text = tdr100;
                             variableToShow = Math.floor(element.NewRecovered * 100000 / country.population);
-                            circleRadius = variableToShow * 5000;
+                            circleRadius = variableToShow * 2000;
                             circleOptions = {color: '#48DD00', fill: 'true', fillColor: '#48DD00', fillOpacity: 0.5, country: element.Country};
                             break;                                                       
                         default: 
@@ -286,7 +286,7 @@ class Map{
     }
 
     changeMap(result, e){ // mode
-        console.log(e);
+      //  console.log(e);
       //  console.log(e.target.innerHTML); 
         this.map.removeLayer(this.group);
      //   console.log(e.target.getAttribute('id'));
