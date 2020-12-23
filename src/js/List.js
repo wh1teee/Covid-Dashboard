@@ -14,12 +14,12 @@ const listOfStatistics = `
             <div class="select__icon">&times;</div>
         </div>
         <div class="select__body">
-            <div class="select__item">TotalConfirmed</div>
-            <div class="select__item">TotalDeaths</div>
-            <div class="select__item">TotalRecovered</div>
-            <div class="select__item">NewConfirmed</div>
-            <div class="select__item">NewDeaths</div>
-            <div class="select__item">NewRecovered</div>
+            <div class="select__item" id='TotalConfirmed'>TotalConfirmed</div>
+            <div class="select__item" id='TotalDeaths'>TotalDeaths</div>
+            <div class="select__item" id='TotalRecovered'>TotalRecovered</div>
+            <div class="select__item" id='NewConfirmed'>NewConfirmed</div>
+            <div class="select__item" id='NewDeaths'>NewDeaths</div>
+            <div class="select__item" id='NewRecovered'>NewRecovered</div>
         </div>
     </div>
     <div class="input__block">
@@ -56,7 +56,7 @@ class List {
             <span><img src="https://www.countryflags.io/${item.CountryCode}/shiny/16.png"></span>
             </div>`)
             })
-        }
+        };
     
         if (chooseSelector === 'TotalRecovered') {
             allData.forEach((item) => {
@@ -66,7 +66,7 @@ class List {
             <span><img src="https://www.countryflags.io/${item.CountryCode}/shiny/16.png"></span>
             </div>`)
             })
-        }
+        };
     
         if (chooseSelector === 'TotalDeaths') {
             allData.forEach((item) => {
@@ -76,7 +76,7 @@ class List {
             <span><img src="https://www.countryflags.io/${item.CountryCode}/shiny/16.png"></span>
             </div>`)
             })
-        }
+        };
     
         if (chooseSelector === 'NewRecovered') {
             allData.forEach((item) => {
@@ -86,7 +86,7 @@ class List {
             <span><img src="https://www.countryflags.io/${item.CountryCode}/shiny/16.png"></span>
             </div>`)
             })
-        }
+        };
     
         if (chooseSelector === 'NewDeaths') {
             allData.forEach((item) => {
@@ -96,7 +96,7 @@ class List {
             <span><img src="https://www.countryflags.io/${item.CountryCode}/shiny/16.png"></span>
             </div>`)
             })
-        }
+        };
     
         if (chooseSelector === 'NewConfirmed') {
             allData.forEach((item) => {
@@ -106,12 +106,13 @@ class List {
             <span><img src="https://www.countryflags.io/${item.CountryCode}/shiny/16.png"></span>
             </div>`)
             })
-        }
+        };
     }  
     
     select() { // logic for drop-down list
         const selectHeader = document.querySelectorAll('.select__header');
         const selectItem = document.querySelectorAll('.select__item');
+        const selectBody = document.querySelector('.select__body');
     
     /*    function selectToggle() {
             this.parentElement.classList.toggle('is-active');
@@ -134,7 +135,7 @@ class List {
                 this.parentElement.classList.toggle('is-active')
             });
         });
-    
+    /*
         selectItem.forEach(item => {
             item.addEventListener('click', function(){
                 const text = this.innerText;
@@ -149,8 +150,38 @@ class List {
                 this.renderTable(text); // render sorted country statistic array
             });
         });
+*//*
+        selectBody.addEventListener('click', function(e){
+            console.log(e.target.getAttribute('id'));
+            const text = e.target.getAttribute('id');
+            const select = this.closest('.select');
+            const currentText = select.querySelector('.select__current');
+            currentText.innerText = text;
+            select.classList.remove('is-active');
+    
+            currentChoosingStatistic = text;
+            console.log(text);
+            sortingData(text); // sorting by selected parameter in drop-down list
+            this.renderTable(e.target.getAttribute('id')); // render sorted country statistic array
+     
+        });*/
+   // });
     
     };
+
+    selectParam(e){
+            console.log(e.target.getAttribute('id'));
+            const text = e.target.getAttribute('id');
+            const select = e.target.closest('.select');
+            const currentText = select.querySelector('.select__current');
+            currentText.innerText = text;
+            select.classList.remove('is-active');
+    
+            currentChoosingStatistic = text;
+            console.log(text);
+            sortingData(text); // sorting by selected parameter in drop-down list
+            this.renderTable(e.target.getAttribute('id')); // render sorted country statistic array
+    }
 
 }
 

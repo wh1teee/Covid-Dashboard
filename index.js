@@ -40,6 +40,7 @@ Data.getData().then(result => {
     document.getElementById('checkbox').addEventListener('change', (event) => table.changeCheckBox(result, event.target.value));
     document.getElementById('clear').addEventListener('click', (event) => table.clearCountryName(result, event));    
 
+    document.querySelector('.select__body').addEventListener('click', (event) => list.selectParam(event));
 
 })
 
