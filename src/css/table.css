@@ -1,8 +1,17 @@
+body{
+    overflow: hidden;
+}
+
+.table {
+    position: relative;
+}
 
 .select {
     position: relative;
     width: 170px;
     user-select: none;
+
+    z-index: 2;
 }
 
 .select.is-active .select__body {
@@ -55,16 +64,24 @@
 }
 
 .cases__sort, .name__sort {
-    margin-left: 10px;
+    margin: 0 0 10px 10px;
+    padding: 4px 10px;
     display: inline-block;
     cursor: pointer;
     width: 70px;
 
-    border: 1px solid black;
     border-radius: 5px;
     text-align: center;
+    outline: none;
+    background: #6cc0e0;
+    border: 1px solid #5ca3bf;
+    border-radius: 5px;
 
     user-select: none;
+}
+
+.cases__sort:hover, .name__sort:hover {
+    background: #54a0be;
 }
 
 .hide {
@@ -75,6 +92,8 @@
     height: 300px;
     width: 100%;
     overflow-y: auto;
+
+    font-size: 18px;
 }
 
 .main {
@@ -92,6 +111,12 @@
 #map {
     height: 580px;
     width: 100%;
+}
+
+.stat__item {
+    margin: 8px 0;
+
+    border-bottom: 1px solid #cacaca;
 }
 
 .stat__item img {
