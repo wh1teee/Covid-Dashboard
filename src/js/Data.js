@@ -1,22 +1,14 @@
-// import { Class } from "leaflet";
-
 class Data {
 
-    static getAPIData() {
 
-        fetch('https://api.covid19api.com/summary')
-        .then((response) => {
-          return response.json();
-        })
-        .then((data) => {
-          console.log(data);
-        });
-
+    static async getData(){
+        const infoCOVID = await fetch('https://api.covid19api.com/summary');
+        const infoCountries = await fetch('https://restcountries.eu/rest/v2/all');
+        const resultCOVID = await infoCOVID.json();
+        const resultCountries = await infoCountries.json();
+        return { resultCOVID, resultCountries };
     }
-
     
-
-
 }
 
 export default Data;

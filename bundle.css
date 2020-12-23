@@ -1,4 +1,234 @@
+* {
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 10px;
+}
+
+/*#container {
+    font-size: 2.3rem;
+    max-width: 130vw;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    
+}
+*/
+header {
+    text-align: center;
+    padding: 1rem;
+    font-size: 3rem;
+    color: red;
+    font-weight: 800;
+    display: flex;
+    justify-content: center;
+}
+
+header img {
+    margin: auto 1rem auto 0;
+    width: 2rem;
+    height: 2rem;
+}
+
+header h1{
+    font-size: 3rem;
+    font-weight: 800;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}    
+
+main {
+   display: flex;
+}
+
+
+
 #map { 
     height: 580px; 
+    width: 100%;
+    
+}
+
+#map.wide {
+    height: 100vh; 
+}
+
+#aside-left.hide, #aside-right.hide {
+    display: none;
+}
+
+
+.legend img {
+    margin: 0 0 -0.5rem 0;
+   
+}
+
+#control__panel {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+}
+
+#aside-left {
+    min-width: 20%;
+}
+
+#general0 {
+    font-size: 2.3rem;
+    color: red;
+    font-weight: 600;
+    text-align: center;
+}
+#general0 p{
+    margin: 1rem auto;
+}
+
+#aside-right {
+    min-width: 20%;
+}
+
+#table1 {
+    margin: 0 1rem;
+    font-size: 1.5rem;
+  /*  display: inline-block;*/
+}
+
+#table__panel p {
+    margin: 1rem auto;
+    color: blue;
+    text-align: center;
+    font-size: 2.5rem;
+}
+#table__panel span {
+    font-size: 1.8rem;
+
+}
+
+#table__controlpanel {
+    margin: 1rem 0 1rem 0;
+}
+
+#table__controlpanel button {
+   /* margin: 0.5rem 0;*/
+}
+
+#checkbox {
+    font-size: 1rem;
+}
+
+#clear {
+    margin: 1rem 0 0 0;
+}
+
+#table__input {
+    margin: 1rem 0 0 0;
+}
+
+.close__button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 500;
+}
+
+#map3 {
+    position: relative;
+}#list2 {
+    margin-top: 4rem;
+}
+
+.select {
+    position: relative;
+    width: 170px;
+    user-select: none;
+}
+
+.select.is-active .select__body {
+    display: block;
+}
+
+.select__header {
+    border: 1px solid #ccc;
+    cursor: pointer;
+    display: flex;
+}
+
+.select__current {
+    font-size: 18px;
+    line-height: 24px;
+    padding: 8px;
+}
+
+.select__icon {
+    align-items: center;
+    display: flex;
+    flex-shrink: 0;
+    justify-content: center;
+    height: 40px;
+    margin-left: auto;
+    text-align: center;
+    width: 40px;
+}
+
+.select__body {
+    border: 1px solid #cccccc;
+    border-top: 0;
+    display: none;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 100%;
+    background-color: #fff;
+}
+
+.select__item {
+    cursor: pointer;
+    font-size: 16px;
+    line-height: 24px;
+    padding: 8px;
+}
+
+.select__item:hover {
+    background-color: #f2f2f2;
+}
+
+.cases__sort, .name__sort {
+    margin-left: 10px;
+    display: inline-block;
+    cursor: pointer;
+    width: 70px;
+    font-size: 1.5rem;
+    border: 1px solid black;
+    border-radius: 5px;
+    text-align: center;
+
+    user-select: none;
+}
+
+.hide {
+    display: none;
+}
+
+.statistic {
+    height: 300px;
+    width: 100%;
+    overflow-y: auto;
+    font-size: 1.5rem;
+    margin-top: 1rem;
+}
+
+.stat__item {
+    margin: 0.5rem auto;
+    cursor: pointer;
+}
+
+.stat__item.highlighed {
+    background-color: red;
+}
+
+.stat__item img {
+    vertical-align: middle;
 }
 /*# sourceMappingURL=bundle.css.map*/

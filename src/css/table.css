@@ -1,0 +1,96 @@
+#list2 {
+    margin-top: 4rem;
+}
+
+.select {
+    position: relative;
+    width: 170px;
+    user-select: none;
+}
+
+.select.is-active .select__body {
+    display: block;
+}
+
+.select__header {
+    border: 1px solid #ccc;
+    cursor: pointer;
+    display: flex;
+}
+
+.select__current {
+    font-size: 18px;
+    line-height: 24px;
+    padding: 8px;
+}
+
+.select__icon {
+    align-items: center;
+    display: flex;
+    flex-shrink: 0;
+    justify-content: center;
+    height: 40px;
+    margin-left: auto;
+    text-align: center;
+    width: 40px;
+}
+
+.select__body {
+    border: 1px solid #cccccc;
+    border-top: 0;
+    display: none;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 100%;
+    background-color: #fff;
+}
+
+.select__item {
+    cursor: pointer;
+    font-size: 16px;
+    line-height: 24px;
+    padding: 8px;
+}
+
+.select__item:hover {
+    background-color: #f2f2f2;
+}
+
+.cases__sort, .name__sort {
+    margin-left: 10px;
+    display: inline-block;
+    cursor: pointer;
+    width: 70px;
+    font-size: 1.5rem;
+    border: 1px solid black;
+    border-radius: 5px;
+    text-align: center;
+
+    user-select: none;
+}
+
+.hide {
+    display: none;
+}
+
+.statistic {
+    height: 300px;
+    width: 100%;
+    overflow-y: auto;
+    font-size: 1.5rem;
+    margin-top: 1rem;
+}
+
+.stat__item {
+    margin: 0.5rem auto;
+    cursor: pointer;
+}
+
+.stat__item.highlighed {
+    background-color: red;
+}
+
+.stat__item img {
+    vertical-align: middle;
+}

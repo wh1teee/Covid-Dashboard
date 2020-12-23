@@ -1,3 +1,138 @@
+* {
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 10px;
+}
+
+/*#container {
+    font-size: 2.3rem;
+    max-width: 130vw;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    
+}
+*/
+header {
+    text-align: center;
+    padding: 1rem;
+    font-size: 3rem;
+    color: red;
+    font-weight: 800;
+    display: flex;
+    justify-content: center;
+}
+
+header img {
+    margin: auto 1rem auto 0;
+    width: 2rem;
+    height: 2rem;
+}
+
+header h1{
+    font-size: 3rem;
+    font-weight: 800;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}    
+
+main {
+   display: flex;
+}
+
+
+
 #map { 
     height: 580px; 
+    width: 100%;
+    
+}
+
+#map.wide {
+    height: 100vh; 
+}
+
+#aside-left.hide, #aside-right.hide {
+    display: none;
+}
+
+
+.legend img {
+    margin: 0 0 -0.5rem 0;
+   
+}
+
+#control__panel {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+}
+
+#aside-left {
+    min-width: 20%;
+}
+
+#general0 {
+    font-size: 2.3rem;
+    color: red;
+    font-weight: 600;
+    text-align: center;
+}
+#general0 p{
+    margin: 1rem auto;
+}
+
+#aside-right {
+    min-width: 20%;
+}
+
+#table1 {
+    margin: 0 1rem;
+    font-size: 1.5rem;
+  /*  display: inline-block;*/
+}
+
+#table__panel p {
+    margin: 1rem auto;
+    color: blue;
+    text-align: center;
+    font-size: 2.5rem;
+}
+#table__panel span {
+    font-size: 1.8rem;
+
+}
+
+#table__controlpanel {
+    margin: 1rem 0 1rem 0;
+}
+
+#table__controlpanel button {
+   /* margin: 0.5rem 0;*/
+}
+
+#checkbox {
+    font-size: 1rem;
+}
+
+#clear {
+    margin: 1rem 0 0 0;
+}
+
+#table__input {
+    margin: 1rem 0 0 0;
+}
+
+.close__button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 500;
+}
+
+#map3 {
+    position: relative;
 }
