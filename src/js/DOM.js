@@ -19,8 +19,8 @@ export default function createDOM() {
                 <div id='table__panel'></div>
                 <div id='table__controlpanel'></div>
                 <input type='checkbox' id='checkbox'>Show country info</input>
-                <button id='clear' title='Clear country name'>Clear</button>
-                <div id='table__input'></div>
+                <button id='clear' title='Clear country info'>Clear</button>
+               
             </div>
             <div id='chart4'></div>
         </section>

@@ -32,7 +32,7 @@ Data.getData().then(result => {
 
     chart.createChart();
 
-    document.getElementById('control__panel').addEventListener('click', (event) => map.changeMap(result, event));
+    document.getElementById('control__panel').addEventListener('click', (event) => map.changeMap(result, event.target.getAttribute('id')));
     document.getElementById('close__button1').addEventListener('click', (event) => map.resizeMap(result, event));
 
     document.getElementById('table__controlpanel').addEventListener('click', (event) => table.changeTable(result, event));
@@ -41,7 +41,7 @@ Data.getData().then(result => {
     document.getElementById('clear').addEventListener('click', (event) => table.clearCountryName(result, event));    
 
     document.querySelector('.select__body').addEventListener('click', (event) => list.selectParam(event));
-
+  //  document.querySelector('.statistic').addEventListener('click', (event) => list.selectCountry(event));
 })
 
 

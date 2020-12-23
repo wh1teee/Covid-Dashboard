@@ -224,14 +224,7 @@ class Map{
                         table.changeTableViaInput(result, e.target.options.country);
                         dom.checkBox.checked = true;
                 });
-            /*    circle.on('mouseover', function(e){
-                    console.log('event');
-                    console.log(e.target);
-                    console.log(e.target.options.country);
-                    this.geojsonLayer.unbindTooltip();
-                  //  table.changeTableViaInput(result, e.target.options.country);
-                  //  dom.checkBox.checked = true;
-            });  */
+ 
 
 
             } // закрывается if
@@ -292,11 +285,12 @@ class Map{
         dom.map3.append(controlDiv); 
     }
 
-    changeMap(result, e){
-        console.log(e.target.innerHTML);
+    changeMap(result, e){ // mode
+        console.log(e);
+      //  console.log(e.target.innerHTML); 
         this.map.removeLayer(this.group);
-        console.log(e.target.getAttribute('id'));
-        this.getData(result, e.target.getAttribute('id'));
+     //   console.log(e.target.getAttribute('id'));
+        this.getData(result, e);
       //  this.changeToolTip(e.target.getAttribute('id'));
     }
 /*

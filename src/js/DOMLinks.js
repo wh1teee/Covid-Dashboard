@@ -19,7 +19,7 @@ class DOMLinks {
             tablePanel: document.getElementById('table__panel'),
             tableControlPanel: document.getElementById('table__controlpanel'),
             tableInput: document.getElementById('table__input'),
-            input: document.getElementById('input'),
+            input: document.querySelector('input'),
             checkBox: document.getElementById('checkbox'),
             clear: document.getElementById('clear'),
             dataList: document.getElementById('countries'),

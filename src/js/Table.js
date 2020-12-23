@@ -60,6 +60,7 @@ class Table {
                // title = country;
                 inputFill = country;
                 countryName = country;
+                console.log(country);
                 const element = result.resultCOVID.Countries.find(item => item.Country === country);
                 console.log(element);
                 countryInfo = result.resultCountries.find(item => item.alpha2Code === element.CountryCode);
@@ -171,16 +172,16 @@ class Table {
                                     <span>${text1}: </span><span>${variableToShow1}</span><br>
                                     <span>${text2}: </span><span>${variableToShow2}</span><br>
                                     <span>${text3}: </span><span>${variableToShow3}</span><br>`;
-            dom.tableInput.innerHTML = `<input type='text' placeholder='Enter country name'
+         /*   dom.tableInput.innerHTML = `<input type='text' placeholder='Enter country name'
                                             list='countries' value='${inputFill}'
                                             id='input' disabled>
                                             <datalist id='countries'>
                                                 ${dataList}
-                                            </datalist>`;
+                                            </datalist>`;*/
             
             // dom.input.disabled = true; 
 
-            document.getElementById('input').addEventListener('change', (event) => {
+       /*     document.getElementById('input').addEventListener('change', (event) => {
                 
                 this.changeTableViaInput(result, event.target.value);
 
@@ -188,7 +189,7 @@ class Table {
                 countryInfo = result.resultCountries.find(item => item.alpha2Code === element.CountryCode);
                 map.fly(countryInfo.latlng, 7);
             
-            });
+            });*/
 
         
             
@@ -240,17 +241,26 @@ class Table {
 
         } else {
             console.log('disabled');
-            dom.input.disabled = true;
+          //  dom.input.disabled = true;
             this.getData(result, 'World', '1');
             map.fly([51.505, -0.09], 2);
+            
         }
     }
 
     clearCountryName(result, e){
         const dom = DOMLinks.getHTMLElements();
-        dom.input.value = '';
+     //   dom.input.value = '';
         dom.checkBox.checked = false;
         this.getData(result, 'World', '1');
+        map.fly([51.505, -0.09], 2);
+        const statItems = document.querySelectorAll('.stat__item');
+        statItems.forEach(statItem => {
+            if (statItem.classList.contains('highlighed')) {
+                statItem.classList.remove('highlighed');
+            }
+        });
+        dom.input.value = '';
     }
 
 
