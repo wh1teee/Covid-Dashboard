@@ -1,13 +1,17 @@
 import Data from "./Data";
-import inputListen from "./search";
+import inputListen, {blockOrUnblockButtons} from "./search";
+// eslint-disable-next-line import/no-cycle
 import sortingData, {sortByCasesListen, sortByNamesListen} from "./sort";
+import {showKeyboardListen} from "./keys";
 
-
+// eslint-disable-next-line import/no-mutable-exports
 let currentChoosingStatistic = 'TotalConfirmed'; // default case
+// eslint-disable-next-line import/no-mutable-exports
 let allData;
 
 const listOfStatistics = `
 <div class="title">
+<div class="header__table">
     <div class="select">
         <div class="select__header">
            <span class="select__current">TotalConfirmed</span>
@@ -25,21 +29,27 @@ const listOfStatistics = `
     </div>
     <div class="input__block">
     <input class="input" type="text" >
+    <button class="keyboard__show"></button>
 </div>
-    <div class="cases__sort">cases</div>
-    <div class="name__sort">name</div>
+    <div class="sort__block">
+    <button class="cases__sort">cases</button>
+    <button class="name__sort">name</button>
+    </div>
+    </div>
     <div class="statistic"></div>
 </div>
 `
-
 Data.getAPIData().then(data => {
     allData = data.Countries;
     document.querySelector('.table').insertAdjacentHTML('beforeEnd', listOfStatistics) // render landing drop-down-list
+    // eslint-disable-next-line no-use-before-define
     renderTable('TotalConfirmed')
+    // eslint-disable-next-line no-use-before-define
     select(); // start drop-down list logic for click
     sortByCasesListen()
     sortByNamesListen()
     inputListen()
+    showKeyboardListen()
 })
 
 export function renderTable(chooseSelector = 'TotalConfirmed') {
@@ -108,6 +118,7 @@ export function renderTable(chooseSelector = 'TotalConfirmed') {
 const select = function () { // logic for drop-down list
     const selectHeader = document.querySelectorAll('.select__header');
     const selectItem = document.querySelectorAll('.select__item');
+    const input = document.querySelector('.input');
 
     function selectToggle() {
         this.parentElement.classList.toggle('is-active');
@@ -115,11 +126,14 @@ const select = function () { // logic for drop-down list
 
     function selectChoose() {
         const text = this.innerText;
+        // eslint-disable-next-line no-shadow
         const select = this.closest('.select');
         const currentText = select.querySelector('.select__current');
         currentText.innerText = text;
         select.classList.remove('is-active');
 
+        input.value = '' // refresh search area if choose another statistic
+        blockOrUnblockButtons(0) // refresh search area if choose another statistic
         currentChoosingStatistic = text
         sortingData(text) // sorting by selected parameter in drop-down list
         renderTable(text) // render sorted country statistic array
@@ -132,7 +146,15 @@ const select = function () { // logic for drop-down list
     selectItem.forEach(item => {
         item.addEventListener('click', selectChoose)
     });
-
+    // eslint-disable-next-line no-use-before-define
+    listenFullScreenBtn()
 };
+
+function listenFullScreenBtn() {
+    const table = document.querySelector('.table')
+    document.querySelector('.full__screen__btn').onclick = () => {
+        table.classList.toggle('full__screen')
+    }
+}
 
 export {allData, currentChoosingStatistic}
