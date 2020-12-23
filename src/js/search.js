@@ -22,7 +22,19 @@ class Search {
                 elasticItems.forEach(item => item.classList.remove('hide'))
             }
          }
-        }     
+        } 
+        
+        blockOrUnblockButtons(length) {
+            const casesSortBtn = document.querySelector('.cases__sort');
+            const namesSortBtn = document.querySelector('.name__sort');
+            if (length > 0) {
+                casesSortBtn.disabled = true;
+                namesSortBtn.disabled = true;
+            } else {
+                casesSortBtn.disabled = false;
+                namesSortBtn.disabled = false;
+            }
+        }
 
 }
 

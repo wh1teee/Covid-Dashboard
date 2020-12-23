@@ -1,32 +1,31 @@
 import ChartJS from "chart.js";
-
 // import DOMLinks from './DOMLinks';
 
-
-
 class Chart {
-    constructor() {
-      
-        this.canvas = document.createElement("canvas");
-        document.body.append(this.canvas);
-        this.ctx = this.canvas.getContext("2d");
-    }
-
-    createChart(x, y) {
-      this.chart = new ChartJS(this.ctx, {
-          type: "bar",
-          data: {
-              labels: x,
-              datasets: [
-                  {
-                      label: "number of cases",
-                      data: y,
-                      backgroundColor: "yellow",
-                  },
-              ],
+  // labels = x items;
+  // data = y items
+  createChart(labels, data) {
+    this.chart = new ChartJS(this.ctx, {
+      type: "bar",
+      data: {
+        labels,
+        datasets: [
+          {
+            label: "# of Votes",
+            data,
           },
-      })  
-    }
+        ],
+      },
+    });
+  }
+
+  render() {
+    document.getElementById(
+      "aside-right"
+    ).innerHTML += '<canvas id="chart1" style="width: 100%; height: 380px"></canvas>';
+
+    this.ctx = document.getElementById("chart1").getContext("2d");
+  }
 }
 const chart = new Chart();
 

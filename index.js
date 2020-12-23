@@ -1,5 +1,6 @@
 import './src/css/style.css';
 import './src/css/table.css';
+import './src/css/keyboard.css';
 
 // import L from 'leaflet';
 import Data from './src/js/Data';
@@ -11,11 +12,13 @@ import list from './src/js/List';
 import table from './src/js/Table';
 import chart from './src/js/Chart';
 import CloseButton from './src/js/CloseButton';
+import renderKeboard from "./src/js/keys";
 
 
 createDOM();
 
 Data.getData();
+renderKeboard('small');
 
 Data.getData().then(result => {
     console.log(result);
@@ -30,18 +33,29 @@ Data.getData().then(result => {
 
     list.createList(result);
 
-    chart.createChart();
+    chart.render();
+    console.log(result);
+    chart.createChart(
+      Object.keys(result.allDataForChart.cases),
+      Object.values(result.allDataForChart.cases)
+    );
 
     document.getElementById('control__panel').addEventListener('click', (event) => map.changeMap(result, event.target.getAttribute('id')));
     document.getElementById('close__button1').addEventListener('click', (event) => map.resizeMap(result, event));
 
-    document.getElementById('table__controlpanel').addEventListener('click', (event) => table.changeTable(result, event));
+    document.getElementById('table__controlpanel').addEventListener('click', (event) => table.changeTable(result, event.target.getAttribute('id')));
 
     document.getElementById('checkbox').addEventListener('change', (event) => table.changeCheckBox(result, event.target.value));
     document.getElementById('clear').addEventListener('click', (event) => table.clearCountryName(result, event));    
 
     document.querySelector('.select__body').addEventListener('click', (event) => list.selectParam(event));
-  //  document.querySelector('.statistic').addEventListener('click', (event) => list.selectCountry(event));
+    document.querySelector('.statistic').addEventListener('click', (event) => list.selectCountry(event));
+    
+    document.querySelector('.full__screen__btn').addEventListener('click', () => {
+        document.getElementById('list2').classList.toggle('full__screen');
+      }
+    )
+
 })
 
 

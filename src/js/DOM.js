@@ -9,7 +9,9 @@ export default function createDOM() {
     <main class="main">
         <section id='aside-left'>
             <div id='general0'></div>
-            <div id='list2' class='table'></div>
+            <div id='list2' class='table'>
+                <button class="full__screen__btn" title="full screen"></button>
+            </div>
         </section>
 
         <section id='map3'></section>

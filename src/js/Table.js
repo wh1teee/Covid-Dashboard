@@ -68,7 +68,7 @@ class Table {
                 console.log(mode);
                 switch(mode) {
                     case '1':
-                        console.log('bol=true1');
+                     //   console.log('bol=true1');
                         text1 = tcc;
                         variableToShow1 = element.TotalConfirmed;
                         text2 = td;
@@ -77,7 +77,7 @@ class Table {
                         variableToShow3 = Math.ceil(element.TotalRecovered);
                         break;
                     case '2':
-                        console.log('bol=true2');
+                   //     console.log('bol=true2');
                         text1 = tcc100;
                         variableToShow1 = Math.ceil(element.TotalConfirmed * 100000 / countryInfo.population);
                         text2 = td100;
@@ -86,7 +86,7 @@ class Table {
                         variableToShow3 = Math.ceil(element.TotalRecovered * 100000 / countryInfo.population);
                         break;
                     case '3':
-                        console.log('bol=true3');
+                   //     console.log('bol=true3');
                         text1 = tdcc;
                         variableToShow1 = element.NewConfirmed;
                         text2 = tdd;
@@ -95,7 +95,7 @@ class Table {
                         variableToShow3 = Math.ceil(element.NewRecovered);
                         break;
                     case '4':
-                        console.log('bol=true4');
+                     //   console.log('bol=true4');
                         text1 = tdcc100;
                         variableToShow1 = Math.ceil(element.NewConfirmed * 100000 / countryInfo.population);
                         text2 = tdd100;
@@ -104,7 +104,7 @@ class Table {
                         variableToShow3 = Math.floor(element.NewRecovered * 100000 / countryInfo.population);
                         break;                                                     
                     default: 
-                        console.log('bol=true-def');
+                   //     console.log('bol=true-def');
                         text1 = tcc;
                         variableToShow1 = element.TotalConfirmed;
                         text2 = td;
@@ -121,7 +121,7 @@ class Table {
                 const worldPopulation = result.resultCountries.reduce((accum, item) => accum + item.population, 0);
                 switch(mode) {
                     case '1':
-                        console.log('bol=false1');
+                     //   console.log('bol=false1');
                         text1 = tcc;
                         variableToShow1 = element.TotalConfirmed;
                         text2 = td;
@@ -130,7 +130,7 @@ class Table {
                         variableToShow3 = Math.ceil(element.TotalRecovered);
                         break;
                     case '2':
-                        console.log('bol=false2');
+                      //  console.log('bol=false2');
                         text1 = tcc100;
                         variableToShow1 = Math.ceil(element.TotalConfirmed * 100000 / worldPopulation);
                         text2 = td100;
@@ -139,7 +139,7 @@ class Table {
                         variableToShow3 = Math.ceil(element.TotalRecovered * 100000 / worldPopulation);
                         break;
                     case '3':
-                        console.log('bol=false3');
+                      //  console.log('bol=false3');
                         text1 = tdcc;
                         variableToShow1 = element.NewConfirmed;
                         text2 = tdd;
@@ -148,7 +148,7 @@ class Table {
                         variableToShow3 = Math.ceil(element.NewRecovered);
                         break;
                     case '4':
-                        console.log('bol=false4');
+                     //   console.log('bol=false4');
                         text1 = tdcc100;
                         variableToShow1 = Math.ceil(element.NewConfirmed * 100000 / worldPopulation);
                         text2 = tdd100;
@@ -157,7 +157,7 @@ class Table {
                         variableToShow3 = Math.floor(element.NewRecovered * 100000 / worldPopulation);
                         break;                                                     
                     default: 
-                        console.log('bol=false-def');
+                     //   console.log('bol=false-def');
                         text1 = tcc;
                         variableToShow1 = element.TotalConfirmed;
                         text2 = td;
@@ -209,19 +209,17 @@ class Table {
 
     changeTable(result, e){  //  e.target.getAttribute('id') - mode
         const dom = DOMLinks.getHTMLElements(); 
-        console.log('changeTable is working');
        // console.log(e.target.innerHTML);
-        console.log(e.target.getAttribute('id'));
+      //  console.log(e.target.getAttribute('id'));
         if (dom.checkBox.checked) {
-            this.getData(result, countryName, e.target.getAttribute('id'));
+            this.getData(result, countryName, e);
         } else {
-            this.getData(result, 'World', e.target.getAttribute('id'));
+            this.getData(result, 'World', e);
         }
     }
 
     changeTableViaInput(result, e){ // e - country name
      //   const dom = DOMLinks.getHTMLElements(); 
-        console.log('changeTableViaInput is working');
         console.log(e);
       //  console.log(e.target.innerHTML);
      //   console.log(e.target.getAttribute('id'));
