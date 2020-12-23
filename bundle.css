@@ -1,4 +1,375 @@
+* {
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 10px;
+}
+
+body{
+    overflow: hidden;
+}
+
+header {
+    text-align: center;
+    padding: 1rem;
+    font-size: 3rem;
+    color: red;
+    font-weight: 800;
+    display: flex;
+    justify-content: center;
+}
+
+header img {
+    margin: auto 1rem auto 0;
+    width: 2rem;
+    height: 2rem;
+}
+
+header h1{
+    font-size: 3rem;
+    font-weight: 800;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}    
+
+main {
+   display: flex;
+}
+
+
+
 #map { 
     height: 580px; 
+    width: 100%;
+    
 }
+
+#map.wide {
+    height: 100vh; 
+}
+
+#aside-left.hide, #aside-right.hide {
+    display: none;
+}
+
+
+.legend img {
+    margin: 0 0 -0.5rem 0;
+   
+}
+
+#control__panel {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+}
+
+#aside-left {
+    min-width: 20%;
+}
+
+#general0 {
+    font-size: 2.3rem;
+    color: red;
+    font-weight: 600;
+    text-align: center;
+}
+#general0 p{
+    margin: 1rem auto;
+}
+
+#aside-right {
+    min-width: 20%;
+}
+
+#table1 {
+    margin: 0 1rem;
+    font-size: 1.5rem;
+  /*  display: inline-block;*/
+}
+
+#table__panel p {
+    margin: 1rem auto;
+    color: blue;
+    text-align: center;
+    font-size: 2.5rem;
+}
+#table__panel span {
+    font-size: 1.8rem;
+
+}
+
+#table__controlpanel {
+    margin: 1rem 0 1rem 0;
+}
+
+#table__controlpanel button {
+   /* margin: 0.5rem 0;*/
+}
+
+#checkbox {
+    font-size: 1rem;
+}
+
+#clear {
+    margin: 1rem 0 0 0;
+}
+
+#table__input {
+    margin: 1rem 0 0 0;
+}
+
+.close__button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 500;
+}
+
+#map3 {
+    position: relative;
+}body{
+    overflow: hidden;
+}
+
+
+#list2 {
+    margin-top: 4rem;
+    position: relative;
+}
+
+.select {
+    position: relative;
+    width: 170px;
+    user-select: none;
+    z-index: 2;
+}
+
+.select.is-active .select__body {
+    display: block;
+}
+
+.select__header {
+    border: 1px solid #ccc;
+    cursor: pointer;
+    display: flex;
+}
+
+.select__current {
+    font-size: 18px;
+    line-height: 24px;
+    padding: 8px;
+}
+
+.select__icon {
+    align-items: center;
+    display: flex;
+    flex-shrink: 0;
+    justify-content: center;
+    height: 40px;
+    margin-left: auto;
+    text-align: center;
+    width: 40px;
+}
+
+.select__body {
+    border: 1px solid #cccccc;
+    border-top: 0;
+    display: none;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 100%;
+    background-color: #fff;
+}
+
+.select__item {
+    cursor: pointer;
+    font-size: 16px;
+    line-height: 24px;
+    padding: 8px;
+}
+
+.select__item:hover {
+    background-color: #f2f2f2;
+}
+
+.cases__sort, .name__sort {
+    margin: 0 0 10px 10px;
+    padding: 4px 10px;
+    display: inline-block;
+    cursor: pointer;
+    width: 70px;
+    font-size: 1.5rem;
+   
+    border-radius: 5px;
+    text-align: center;
+    outline: none;
+    background: #6cc0e0;
+    border: 1px solid #5ca3bf;
+    user-select: none;
+}
+
+.cases__sort:hover, .name__sort:hover {
+    background: #54a0be;
+}
+
+
+.hide {
+    display: none;
+}
+
+.statistic {
+    height: 300px;
+    width: 100%;
+    overflow-y: auto;
+    font-size: 1.8rem;
+    margin-top: 1rem;
+}
+
+.stat__item {
+    margin: 0.8rem auto;
+    cursor: pointer;
+    border-bottom: 1px solid #cacaca;
+}
+
+.stat__item.highlighed {
+    background-color: red;
+}
+
+.stat__item img {
+    vertical-align: middle;
+}
+
+.input__block {
+    margin: 15px 0;
+    position: relative;
+}
+
+.input {
+    width: 162px;
+}
+
+.header__table {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.keyboard__show {
+    position: absolute;
+    right: -21px;
+    width: 20px;
+    height: 20px;
+
+}
+
+.full__screen__btn {
+    position: absolute;
+    right: -2px;
+    top: -2px;
+    width: 18px;
+    height: 18px;
+    z-index: 100000;
+
+    outline: none;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.full__screen {
+    position: absolute;
+
+    width: 99vw;
+    height: 100vh;
+    background-color: #ffff;
+    z-index: 1000000;
+}.keyboard {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -500px;
+    z-index: 10000;
+    display: flex;
+    flex-wrap: wrap;
+
+    font-family: 'Roboto', sans-serif;
+    border: 1px solid slategrey;
+    padding: 5px;
+    border-radius: 4px;
+    width: 769px;
+
+    transition: bottom .6s linear;
+}
+
+.key {
+    float: left;
+    width: 36px;
+    height: 36px;
+    border: 1px solid slategrey;
+    border-radius: 4px;
+    margin: 3px;
+    padding: 4px;
+    text-align: center;
+    line-height: 32px;
+}
+
+.key:hover {
+    color: #fff;
+    background: slategrey;
+    cursor: pointer;
+}
+
+.Backspace {
+    width: 76px;
+    font-size: 10px;
+    line-height: 100%;
+}
+
+.Tab, .Enter {
+    width: 56px;
+}
+
+.CapsLock {
+    width: 127px;
+}
+
+.ShiftRight, .ShiftLeft {
+    width: 108px;
+}
+
+.ControlLeft, .ControlRight {
+    width: 69px;
+}
+
+.AltLeft, .AltRight {
+    width: 56px;
+}
+
+.Space {
+    width: 248px;
+}
+
+.Listen, .Sound {
+    width: 53px;
+}
+
+.line1, .line2,
+.line3, .line4,
+.line5 {
+    display: flex;
+}
+
+.active {
+    color: #fff;
+    background: slategrey;
+}
+
+.show {
+    bottom: 20px;
+}
+
 /*# sourceMappingURL=bundle.css.map*/

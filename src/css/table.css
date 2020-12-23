@@ -1,0 +1,158 @@
+body{
+    overflow: hidden;
+}
+
+
+#list2 {
+    margin-top: 4rem;
+    position: relative;
+}
+
+.select {
+    position: relative;
+    width: 170px;
+    user-select: none;
+    z-index: 2;
+}
+
+.select.is-active .select__body {
+    display: block;
+}
+
+.select__header {
+    border: 1px solid #ccc;
+    cursor: pointer;
+    display: flex;
+}
+
+.select__current {
+    font-size: 18px;
+    line-height: 24px;
+    padding: 8px;
+}
+
+.select__icon {
+    align-items: center;
+    display: flex;
+    flex-shrink: 0;
+    justify-content: center;
+    height: 40px;
+    margin-left: auto;
+    text-align: center;
+    width: 40px;
+}
+
+.select__body {
+    border: 1px solid #cccccc;
+    border-top: 0;
+    display: none;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 100%;
+    background-color: #fff;
+}
+
+.select__item {
+    cursor: pointer;
+    font-size: 16px;
+    line-height: 24px;
+    padding: 8px;
+}
+
+.select__item:hover {
+    background-color: #f2f2f2;
+}
+
+.cases__sort, .name__sort {
+    margin: 0 0 10px 10px;
+    padding: 4px 10px;
+    display: inline-block;
+    cursor: pointer;
+    width: 70px;
+    font-size: 1.5rem;
+   
+    border-radius: 5px;
+    text-align: center;
+    outline: none;
+    background: #6cc0e0;
+    border: 1px solid #5ca3bf;
+    user-select: none;
+}
+
+.cases__sort:hover, .name__sort:hover {
+    background: #54a0be;
+}
+
+
+.hide {
+    display: none;
+}
+
+.statistic {
+    height: 300px;
+    width: 100%;
+    overflow-y: auto;
+    font-size: 1.8rem;
+    margin-top: 1rem;
+}
+
+.stat__item {
+    margin: 0.8rem auto;
+    cursor: pointer;
+    border-bottom: 1px solid #cacaca;
+}
+
+.stat__item.highlighed {
+    background-color: red;
+}
+
+.stat__item img {
+    vertical-align: middle;
+}
+
+.input__block {
+    margin: 15px 0;
+    position: relative;
+}
+
+.input {
+    width: 162px;
+}
+
+.header__table {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.keyboard__show {
+    position: absolute;
+    right: -21px;
+    width: 20px;
+    height: 20px;
+
+}
+
+.full__screen__btn {
+    position: absolute;
+    right: -2px;
+    top: -2px;
+    width: 18px;
+    height: 18px;
+    z-index: 100000;
+
+    outline: none;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.full__screen {
+    position: absolute;
+
+    width: 99vw;
+    height: 100vh;
+    background-color: #ffff;
+    z-index: 1000000;
+}

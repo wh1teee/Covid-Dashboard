@@ -2,6 +2,8 @@ import ChartJS from "chart.js";
 // import DOMLinks from './DOMLinks';
 
 class Chart {
+  // labels = x items;
+  // data = y items
   createChart(labels, data) {
     this.chart = new ChartJS(this.ctx, {
       type: "bar",
@@ -20,7 +22,7 @@ class Chart {
   render() {
     document.getElementById(
       "aside-right"
-    ).innerHTML += <canvas id="chart1" style="width: 100%; height: 380px"></canvas>;
+    ).innerHTML += '<canvas id="chart1" style="width: 100%; height: 380px"></canvas>';
 
     this.ctx = document.getElementById("chart1").getContext("2d");
   }
