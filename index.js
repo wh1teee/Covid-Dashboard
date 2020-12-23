@@ -3,17 +3,15 @@ import './src/css/table.css';
 import './src/css/keyboard.css';
 import generateLayout from "./src/js/generalLayout";
 import Data from './src/js/Data';
-import Header from './src/js/Header';
 import Map from './src/js/Map';
 import Table from './src/js/Table';
 import Chart from './src/js/Chart';
+import renderKeboard from "./src/js/keys";
 
 generateLayout()
 const map = new Map(51.505, -0.09, 2);
 map.createMap();
-
-Data.getAPIData();
-
+renderKeboard('small')
 /*
 import cors from 'cors';
 
