@@ -9,7 +9,6 @@ import chart from './Chart';
 let currentChoosingStatistic = 'TotalConfirmed'; // default case
 let allData;
 let allDataFull;
-let element;
 let worldPopulation;
 let countryPopulation;
 
@@ -79,6 +78,7 @@ class List {
       this.insertCountryInTableBySelector(dom.statistic, allData, chooseSelector);
       map.changeMap(allDataFull, '9');
       table.changeTable(allDataFull, '1');
+      chart.destroy();
       chart.createChart(
         Object.keys(allDataFull.allDataForChart.recovered),
         Object.values(allDataFull.allDataForChart.recovered),
@@ -90,6 +90,7 @@ class List {
       this.insertCountryInTableBySelector(dom.statistic, allData, chooseSelector);
       map.changeMap(allDataFull, '5');
       table.changeTable(allDataFull, '1');
+      chart.destroy();
       chart.createChart(
         Object.keys(allDataFull.allDataForChart.deaths),
         Object.values(allDataFull.allDataForChart.deaths),
@@ -154,9 +155,6 @@ class List {
 
   select () { // logic for drop-down list
     const selectHeader = document.querySelectorAll('.select__header');
-    const selectItem = document.querySelectorAll('.select__item');
-    const selectBody = document.querySelector('.select__body');
-    const input = document.querySelector('.input');
 
     selectHeader.forEach(item => {
       item.addEventListener('click', function () {
@@ -196,6 +194,7 @@ class List {
     const countryInfo = allDataFull.resultCountries.find(item => item.alpha2Code === element.CountryCode);
     map.fly(countryInfo.latlng, 7);
     dom.checkBox.checked = true;
+    chart.destroy();
     chart.createChart(
       Object.keys(result.allDataForChartCountries.find(item => item.country === country).timeline.cases),
       Object.values(result.allDataForChartCountries.find(item => item.country === country).timeline.cases),

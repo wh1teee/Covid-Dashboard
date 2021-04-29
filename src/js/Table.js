@@ -200,6 +200,7 @@ class Table {
     search.blockOrUnblockButtons(0);
     this.getData(result, 'World', '1');
     map.fly([51.505, -0.09], 2);
+    chart.destroy();
     chart.createChart(
       Object.keys(result.allDataForChart.cases),
       Object.values(result.allDataForChart.cases),
