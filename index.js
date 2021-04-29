@@ -1,8 +1,6 @@
 import './src/css/style.css';
 import './src/css/table.css';
 import './src/css/keyboard.css';
-
-// import L from 'leaflet';
 import Data from './src/js/Data';
 
 import createDOM from './src/js/DOM';
@@ -11,81 +9,63 @@ import General from './src/js/General';
 import list from './src/js/List';
 import table from './src/js/Table';
 import chart from './src/js/Chart';
-import CloseButton from './src/js/CloseButton';
-import renderKeboard from "./src/js/keys";
-
+import renderKeboard from './src/js/keys';
+import listenFullScreenButtons from './src/js/fullscreen';
 
 createDOM();
-
 Data.getData();
 renderKeboard('small');
 
+const main = document.querySelector('.main');
+main.style.display = 'none';
+main.insertAdjacentHTML('afterend', `
+    <div class="loading">
+        <img src="./src/images/spinner.svg" alt="loading...">
+    </div>
+`);
+
 Data.getData().then(result => {
-    console.log(result);
-    map.createMap(51.505, -0.09, 2);
-    map.getData(result, '1');
-  //  map.showGeoJSON();
+  map.createMap(51.505, -0.09, 2);
+  map.getData(result, '1');
+  map.showGeoJSON(result, '1');
 
-    CloseButton.createCloseButton('1', document.getElementById('map3'));
- 
-    table.getData(result, 'World', '1');
-    General.createGeneral(result);
+  table.getData(result, 'World', '1');
+  General.createGeneral(result);
 
-    list.createList(result);
+  list.createList(result);
 
-    chart.render();
-    console.log(result);
-    chart.createChart(
-      Object.keys(result.allDataForChart.cases),
-      Object.values(result.allDataForChart.cases)
-    );
+  chart.render();
+  console.log(result);
+  chart.createChart(
+    Object.keys(result.allDataForChart.cases),
+    Object.values(result.allDataForChart.cases),
+    '#0E53A7',
+  );
 
-    document.getElementById('control__panel').addEventListener('click', (event) => map.changeMap(result, event.target.getAttribute('id')));
-    document.getElementById('close__button1').addEventListener('click', (event) => map.resizeMap(result, event));
+  console.log(result.allDataForChart);
 
-    document.getElementById('table__controlpanel').addEventListener('click', (event) => table.changeTable(result, event.target.getAttribute('id')));
+  document.getElementById('control__panel').addEventListener('click', (event) => map.changeMap(result, event.target.getAttribute('id')));
+  document.getElementById('control__panel').addEventListener('click', (event) => table.changeTable(result, event.target.getAttribute('id')));
+  document.getElementById('control__panel').addEventListener('click', (event) => map.showGeoJSON(result, event.target.getAttribute('id')));
 
-    document.getElementById('checkbox').addEventListener('change', (event) => table.changeCheckBox(result, event.target.value));
-    document.getElementById('clear').addEventListener('click', (event) => table.clearCountryName(result, event));    
+  document.getElementById('table__controlpanel').addEventListener('click', (event) => table.changeTable(result, event.target.getAttribute('id')));
+  document.getElementById('table__controlpanel').addEventListener('click', (event) => map.changeMap(result, event.target.getAttribute('id')));
 
-    document.querySelector('.select__body').addEventListener('click', (event) => list.selectParam(event));
-    document.querySelector('.statistic').addEventListener('click', (event) => list.selectCountry(event));
-    
-    document.querySelector('.full__screen__btn').addEventListener('click', () => {
-        document.getElementById('list2').classList.toggle('full__screen');
-      }
-    )
+  document.getElementById('checkbox').addEventListener('change', (event) => table.changeCheckBox(result, event.target.value));
+  document.getElementById('clear').addEventListener('click', (event) => table.clearCountryName(result, event));
+  document.querySelector('.input').addEventListener('click', (event) => table.clearCountryName(result, event));
 
+  document.querySelector('.select__body').addEventListener('click', (event) => list.selectParam(event));
+  document.querySelector('.statistic').addEventListener('click', (event) => list.selectCountry(result, event));
+
+  listenFullScreenButtons();
 })
-
-
-
-
-
-
-
-
-
-/*
-
-list.getData(1);
-
-table.getData('World', '1');
-
-
-map.createMap(51.505, -0.09, 2);
-map.getData(1);
-
-
-document.getElementById('control__panel').addEventListener('click', (event) => map.changeMap(event));
-
-
-document.getElementById('table__controlpanel').addEventListener('click', (event) => table.changeTable(event));
-
-document.getElementById('checkbox').addEventListener('change', (event) => table.changeCheckBox(event.target.value));
-document.getElementById('clear').addEventListener('click', (event) => table.clearCountryName(event));    
-
-*/
-
-
+  .catch(e => {
+    throw Error(e);
+  })
+  .finally(() => {
+    const loadingDiv = document.querySelector('.loading');
+    loadingDiv.remove();
+    main.style.display = 'flex';
+  });
 

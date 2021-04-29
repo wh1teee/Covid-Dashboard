@@ -6,15 +6,17 @@ html {
     font-size: 10px;
 }
 
-body{
-    overflow: hidden;
+body {
+    background-color: #222;
+    color: #bdbdbd;
+    margin: 0;
 }
 
 header {
     text-align: center;
-    padding: 1rem;
+    padding: 1rem 2rem;
     font-size: 3rem;
-    color: red;
+    color: #e63939;
     font-weight: 800;
     display: flex;
     justify-content: center;
@@ -26,37 +28,40 @@ header img {
     height: 2rem;
 }
 
-header h1{
+header h1 {
     font-size: 3rem;
     font-weight: 800;
     margin-top: 1rem;
     margin-bottom: 1rem;
-}    
+}
 
 main {
-   display: flex;
+    display: flex;
+    padding: 1rem 2rem;
 }
 
 
-
-#map { 
-    height: 580px; 
+#map {
+    height: 580px;
     width: 100%;
-    
+
 }
 
 #map.wide {
-    height: 100vh; 
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: calc(100vh - 100px);
+    z-index: 100;
 }
 
 #aside-left.hide, #aside-right.hide {
     display: none;
 }
 
-
 .legend img {
     margin: 0 0 -0.5rem 0;
-   
 }
 
 #control__panel {
@@ -66,39 +71,89 @@ main {
     margin-top: 1rem;
 }
 
+#control__panel button {
+    background-color: #3c3c3c;
+    color: white;
+    border-radius: 0.5rem;
+}
+
+#control__panel button:hover {
+    background-color: white;
+    color: #3c3c3c;
+}
+
 #aside-left {
     min-width: 20%;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    display: flex;
+    flex-direction: column;
 }
 
 #general0 {
+    text-align: center;
+}
+
+#general0 #global__cases {
     font-size: 2.3rem;
     color: red;
     font-weight: 600;
-    text-align: center;
+    margin-bottom: 2rem;
 }
-#general0 p{
+
+#general0 #global__cases p {
+    font-size: 2.3rem;
+    font-weight: 400;
+    color: white;
+    margin-top: 0;
+}
+
+#general0 #last__update {
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+#general0 p {
     margin: 1rem auto;
 }
 
 #aside-right {
     min-width: 20%;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    display: flex;
+    flex-direction: column;
 }
 
 #table1 {
-    margin: 0 1rem;
+    margin: 0 0 4rem 0;
     font-size: 1.5rem;
-  /*  display: inline-block;*/
+    text-align: center;
+
 }
 
-#table__panel p {
-    margin: 1rem auto;
+#table__panel p#table__title {
+    margin: 0 auto 1rem auto;
     color: blue;
     text-align: center;
     font-size: 2.5rem;
 }
-#table__panel span {
-    font-size: 1.8rem;
 
+#table__panel p {
+    font-size: 1.8rem;
+    margin: 0.2rem auto;
+}
+
+#table__panel p#show1 {
+    color: #0E53A7;
+}
+
+#table__panel p#show2 {
+    color: #FF5C00;
+}
+
+#table__panel p#show3 {
+    color: #48DD00;
 }
 
 #table__controlpanel {
@@ -106,7 +161,14 @@ main {
 }
 
 #table__controlpanel button {
-   /* margin: 0.5rem 0;*/
+    background-color: #3c3c3c;
+    color: white;
+    border-radius: 0.5rem;
+}
+
+#table__controlpanel button:hover {
+    background-color: white;
+    color: #3c3c3c;
 }
 
 #checkbox {
@@ -128,10 +190,207 @@ main {
     z-index: 500;
 }
 
-#map3 {
+#map3__block {
     position: relative;
-}body{
-    overflow: hidden;
+}
+
+.leaflet-container {
+    background-color: #222;
+
+}
+
+.chart_div {
+    position: relative;
+}
+
+.table1__block {
+    position: relative;
+}
+
+.full__screen__btn {
+    position: absolute;
+    right: 0.5rem;
+    top: 0.2rem;
+    width: 1.8rem;
+    height: 1.8rem;
+    z-index: 100000;
+    outline: none;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.full__screen__btn:hover {
+    transform: scale(1.064);
+    color: #eaeaea;
+}
+
+.full__screen {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    background-color: #333;
+    z-index: 1000000;
+
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    /*align-items: center;*/
+    justify-content: center
+}
+
+.chart_div {
+    width: 100%;
+    min-height: 250px;
+}
+
+#style-13::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.9);
+    border-radius: 10px;
+    background-color: #333;
+    /*background: linear-gradient(to top, #008aff, #00ffe7);*/
+    /*animation: animate 5s linear infinite;*/
+}
+
+#style-13::-webkit-scrollbar {
+    width: 1rem;
+    background-color: #333;
+}
+
+#style-13::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: #D62929;
+    background-image: -webkit-linear-gradient(90deg,
+    transparent,
+    rgba(0, 0, 0, 0.4) 50%,
+    transparent,
+    transparent);
+}
+
+footer {
+    padding: 1rem 2rem;
+    font-size: 1.5rem;
+    text-decoration: none;
+    margin: 3rem auto;
+    text-align: center;
+}
+
+footer a {
+    text-decoration: none;
+    text-align: center;
+    color: white;
+}
+
+footer div {
+    display: flex;
+    justify-content: center;
+    margin: 1rem auto;
+}
+
+footer img {
+    width: 8rem;
+    margin-left: 2rem;
+    /*  background-color: white;*/
+    filter: invert(1);
+}
+
+footer img.gh {
+    width: 2rem;
+    margin-top: -0.5rem;
+    filter: invert(1);
+}
+
+
+@media (max-width: 1000px) {
+    main {
+        flex-direction: column;
+    }
+
+    #map3 {
+        order: 3;
+    }
+
+    #aside-left {
+        flex-direction: row;
+    }
+
+    #aside-right {
+        flex-direction: row;
+        margin-top: 4rem;
+    }
+
+    #general0 {
+        margin: 10.5rem 2rem 0 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    #list2 {
+        width: 80%;
+    }
+
+    .header__table {
+        flex-direction: row !important;
+
+    }
+
+    .sort__block {
+        margin: 1.5rem 0 1.5rem 3rem;
+    }
+
+    #chart4 {
+        width: 100%;
+    }
+
+    #table1 {
+        width: 70%;
+    }
+
+    .table1__block {
+        display: flex;
+        flex-direction: row !important;
+    }
+
+    #clear {
+        position: absolute;
+        bottom: 5rem;
+        right: 1rem;
+    }
+
+    .table1__block label {
+        position: absolute;
+        bottom: 5rem;
+        right: 1rem;
+    }
+
+    #table__controlpanel {
+        width: 50%;
+    }
+
+}
+
+@media (max-width: 800px) {
+    main {
+        flex-direction: column;
+    }
+
+    #map3 {
+        order: 3;
+    }
+
+    #aside-right {
+        margin-top: 4rem;
+    }
+
+    .keyboard {
+        width: 100%;
+    }
+}
+
+html {
+    font-size: 10px;
 }
 
 
@@ -142,7 +401,7 @@ main {
 
 .select {
     position: relative;
-    width: 170px;
+    width: 17rem;
     user-select: none;
     z-index: 2;
 }
@@ -158,9 +417,9 @@ main {
 }
 
 .select__current {
-    font-size: 18px;
-    line-height: 24px;
-    padding: 8px;
+    font-size: 1.8rem;
+    line-height: 2.4rem;
+    padding: 0.8rem;
 }
 
 .select__icon {
@@ -168,10 +427,10 @@ main {
     display: flex;
     flex-shrink: 0;
     justify-content: center;
-    height: 40px;
+    height: 4rem;
     margin-left: auto;
     text-align: center;
-    width: 40px;
+    width: 4rem;
 }
 
 .select__body {
@@ -187,9 +446,9 @@ main {
 
 .select__item {
     cursor: pointer;
-    font-size: 16px;
-    line-height: 24px;
-    padding: 8px;
+    font-size: 1.6rem;
+    line-height: 2.4rem;
+    padding: 0.8rem;
 }
 
 .select__item:hover {
@@ -197,32 +456,35 @@ main {
 }
 
 .cases__sort, .name__sort {
-    margin: 0 0 10px 10px;
-    padding: 4px 10px;
+    margin: 0 0 1rem 1rem;
+    padding: 0.4rem 1rem;
     display: inline-block;
     cursor: pointer;
-    width: 70px;
     font-size: 1.5rem;
-   
+
     border-radius: 5px;
-    text-align: center;
     outline: none;
-    background: #6cc0e0;
-    border: 1px solid #5ca3bf;
+    background: #3c3939;
+    border: 1px solid #794b4b;
+    color: #dedede;
     user-select: none;
 }
 
 .cases__sort:hover, .name__sort:hover {
-    background: #54a0be;
+    background-color: #4a4747;
 }
 
+.cases {
+    margin-right: 3px;
+    color: red;
+}
 
 .hide {
     display: none;
 }
 
 .statistic {
-    height: 300px;
+    height: 30rem;
     width: 100%;
     overflow-y: auto;
     font-size: 1.8rem;
@@ -244,12 +506,23 @@ main {
 }
 
 .input__block {
-    margin: 15px 0;
+    margin: 1.5rem 0;
     position: relative;
 }
 
 .input {
-    width: 162px;
+    width: 16.2rem;
+    height: 2.5rem;
+    border: none;
+    background-color: #3c3c3c;
+    border-radius: 0.5rem;
+    outline: none;
+    color: #dedede;
+}
+
+.input:focus {
+    border: 1px solid #a2a1a1;
+    border-radius: 0.5rem;
 }
 
 .header__table {
@@ -259,39 +532,27 @@ main {
     justify-content: center;
 }
 
-.keyboard__show {
-    position: absolute;
-    right: -21px;
-    width: 20px;
-    height: 20px;
 
+#style-3::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 0.6rem rgba(0, 0, 0, 0.3);
+    background-color: #F5F5F5;
 }
 
-.full__screen__btn {
-    position: absolute;
-    right: -2px;
-    top: -2px;
-    width: 18px;
-    height: 18px;
-    z-index: 100000;
-
-    outline: none;
-    border-radius: 50%;
-    cursor: pointer;
+#style-3::-webkit-scrollbar {
+    width: 0.6rem;
+    background-color: #F5F5F5;
 }
 
-.full__screen {
-    position: absolute;
+#style-3::-webkit-scrollbar-thumb {
+    background-color: #000000;
+}
 
-    width: 99vw;
-    height: 100vh;
-    background-color: #ffff;
-    z-index: 1000000;
-}.keyboard {
-    position: absolute;
+.keyboard {
+    box-sizing: content-box;
+    position: fixed;
     left: 50%;
     transform: translateX(-50%);
-    bottom: -500px;
+    bottom: -100%;
     z-index: 10000;
     display: flex;
     flex-wrap: wrap;
@@ -302,12 +563,16 @@ main {
     border-radius: 4px;
     width: 769px;
 
+    background-color: rgba(33, 32, 32, .98);
     transition: bottom .6s linear;
 }
 
 .key {
+    box-sizing: content-box;
     float: left;
-    width: 36px;
+    width: 100%;
+
+    max-width: 36px;
     height: 36px;
     border: 1px solid slategrey;
     border-radius: 4px;
@@ -315,6 +580,8 @@ main {
     padding: 4px;
     text-align: center;
     line-height: 32px;
+
+    color: #aab4be;
 }
 
 .key:hover {
@@ -324,37 +591,52 @@ main {
 }
 
 .Backspace {
-    width: 76px;
+    width: 100%;
+    max-width: 76px;
     font-size: 10px;
     line-height: 100%;
 }
 
 .Tab, .Enter {
-    width: 56px;
+    width: 100%;
+
+    max-width: 56px;
 }
 
 .CapsLock {
-    width: 127px;
+    width: 100%;
+
+    max-width: 127px;
 }
 
 .ShiftRight, .ShiftLeft {
-    width: 108px;
+    width: 100%;
+
+    max-width: 108px;
 }
 
 .ControlLeft, .ControlRight {
-    width: 69px;
+    width: 100%;
+
+    max-width: 83px;
 }
 
 .AltLeft, .AltRight {
-    width: 56px;
+    width: 100%;
+
+    max-width: 83px;
 }
 
 .Space {
-    width: 248px;
+    width: 100%;
+
+    max-width: 356px;
 }
 
 .Listen, .Sound {
-    width: 53px;
+    width: 100%;
+
+    max-width: 53px;
 }
 
 .line1, .line2,
@@ -372,4 +654,143 @@ main {
     bottom: 20px;
 }
 
-/*# sourceMappingURL=bundle.css.map*/
+.keyboard__show {
+    position: absolute;
+    right: -2.7rem;
+    top: 0px;
+    width: 2rem;
+    cursor: pointer;
+
+}
+
+.keyboard__show:hover {
+    transform: scale(1.04)
+}
+
+@media (max-width: 800px) {
+
+    .keyboard {
+        width: 530px;
+    }
+
+    .key {
+        max-width: 20px;
+        height: 20px;
+    }
+
+
+    .ControlLeft, .ControlRight {
+        max-width: 55px;
+    }
+
+    .ShiftRight, .ShiftLeft {
+        max-width: 69px;
+    }
+
+    .AltLeft, .AltRight {
+        max-width: 45px;
+    }
+
+    .Backspace {
+        max-width: 46px;
+    }
+
+    .Tab, .Enter {
+        max-width: 33px;
+    }
+
+    .CapsLock {
+        max-width: 81px;
+    }
+
+    .Space {
+        max-width: 250px;
+    }
+}
+
+@media (max-width: 545px) {
+    .keyboard {
+        width: 400px;
+    }
+
+    .key {
+        max-width: 11px;
+        height: 11px;
+        text-align: center;
+        line-height: normal;
+    }
+
+    .Backspace {
+        max-width: 33px;
+        font-size: 7px;
+    }
+
+    .Tab, .Enter {
+        max-width: 22px;
+    }
+
+    .CapsLock {
+        max-width: 60px;
+    }
+
+    .ShiftRight, .ShiftLeft {
+        max-width: 49px;
+    }
+
+    .ControlLeft, .ControlRight {
+        max-width: 34px;
+    }
+
+    .Space {
+        max-width: 181px;
+    }
+
+    .AltLeft, .AltRight {
+        max-width: 35px;
+    }
+}
+
+@media (max-width: 400px) {
+    .keyboard {
+        width: 320px;
+    }
+
+    .key {
+        max-width: 6px;
+        height: 6px;
+        text-align: center;
+        line-height: 1;
+        font-size: 10px;
+    }
+
+    .Backspace {
+        max-width: 18px;
+        font-size: 4px;
+    }
+
+    .Tab, .Enter {
+        max-width: 12px;
+        font-size: 7px;
+    }
+
+    .CapsLock {
+        max-width: 40px;
+        font-size: 9px;
+    }
+
+    .ShiftRight, .ShiftLeft {
+        max-width: 34px;
+    }
+
+    .ControlLeft, .ControlRight {
+        max-width: 25px;
+    }
+
+    .AltLeft, .AltRight {
+        max-width: 28px;
+    }
+
+    .Space {
+        max-width: 134px;
+    }
+}
