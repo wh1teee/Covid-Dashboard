@@ -1,73 +1,50 @@
 let obj = [];
 let countriesData = {};
 
-
-
-
-function getCountriesData() {
-    fetch('https://restcountries.eu/rest/v2/all')
+function getCountriesData () {
+  fetch('https://restcountries.eu/rest/v2/all')
     .then((response) => {
-        return response.json();
+      return response.json();
     })
     .then((data) => {
-        console.log(data);
-        countriesData = data;
-
-      //  getAPIData();
+      countriesData = data;
     });
 }
 
-function findCountry(countryCode) {
-    let ifFind = false;
-    let latlng = [];
-    for (let i = 0; i < countriesData.length; i += 1) {
-        const array = countriesData[i];
-        if (countryCode === countriesData[i].alpha2Code){
-            latlng = array.latlng;
-            ifFind = true;
-            break;
-        }
-        if (ifFind) break;
-    }     
-    return latlng;   
+function findCountry (countryCode) {
+  let ifFind = false;
+  let latlng = [];
+  for (let i = 0; i < countriesData.length; i += 1) {
+    const array = countriesData[i];
+    if (countryCode === countriesData[i].alpha2Code) {
+      latlng = array.latlng;
+      ifFind = true;
+      break;
+    }
+    if (ifFind) break;
+  }
+  return latlng;
 }
 
-function getAPIData() {
- //   const datas = await fetch('https://api.covid19api.com/summary');
-    fetch('https://api.covid19api.com/summary')
+function getAPIData () {
+  fetch('https://api.covid19api.com/summary')
     .then((response) => {
-        return response.json();
+      return response.json();
     })
     .then((data) => {
-      //  console.log(data);
-        console.log(data.Countries);
-        obj = data.Countries;
-      
-        obj.map(element => {
-          const el = element;
-          const [latitude, longitude]  = findCountry(element.CountryCode);
-          el.Latitude = latitude;
-          el.Longitude = longitude;
-          console.log(element.Country, el.Latitude, el.Longitude);
-        });
-        console.log(obj);
-        return obj;
+      obj = data.Countries;
+
+      obj.map(element => {
+        const el = element;
+        const [latitude, longitude] = findCountry(element.CountryCode);
+        el.Latitude = latitude;
+        el.Longitude = longitude;
+      });
+      return obj;
     });
 }
 
 getCountriesData();
 const dataz = getAPIData();
-console.log(dataz);
 
 export default dataz;
-
-
-
-
-
-
- 
-
-
-
-    

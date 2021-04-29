@@ -54,12 +54,8 @@ class Table {
       // title = country;
       inputFill = country;
       countryName = country;
-      console.log(country);
       const element = result.resultCOVID.Countries.find(item => item.Country === country);
-      console.log(element);
       countryInfo = result.resultCountries.find(item => item.alpha2Code === element.CountryCode);
-      console.log(countryInfo);
-      console.log(mode);
       switch (mode) {
         case '1':
           text1 = tcc;
@@ -102,7 +98,6 @@ class Table {
           variableToShow3 = Math.ceil(element.TotalRecovered);
           break;
       }
-      ;
 
     } else {
       inputFill = '';
@@ -156,7 +151,6 @@ class Table {
                                 <p>${text1}: </p><p id='show1'>${variableToShow1}</p><br>
                                 <p>${text2}: </p><p id='show2'>${variableToShow2}</p><br>
                                 <p>${text3}: </p><p id='show3'>${variableToShow3}</p><br>`;
-
     this.createControlPanel();
   }
 
@@ -186,19 +180,15 @@ class Table {
   }
 
   changeTableViaInput (result, e) { // e - country name
-    console.log(e);
     this.getData(result, e, '1');
   }
 
   changeCheckBox (result, e) {
     const dom = DOMLinks.getHTMLElements();
-    console.log(e);
     if (dom.checkBox.checked) {
-      console.log('checked');
       dom.input.disabled = false;
 
     } else {
-      console.log('disabled');
       this.getData(result, 'World', '1');
       map.fly([51.505, -0.09], 2);
     }

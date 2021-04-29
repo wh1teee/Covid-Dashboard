@@ -6,9 +6,7 @@ class Search {
   inputListen (result) {
     const input = document.querySelector('.input');
     input.oninput = function () {
-      console.log(input.value);
       let val = input.value.trim();
-      console.log(val);
       const elasticItems = document.querySelectorAll('.stat__item');
 
       if (val !== '') {
@@ -18,11 +16,9 @@ class Search {
           } else {
             item.classList.remove('hide');
             item.addEventListener('click', (event) => list.selectCountry(event));
-            console.log('choice');
           }
         });
       } else {
-        console.log('pusto');
         table.clearCountryName(result);
         elasticItems.forEach(item => item.classList.remove('hide'));
       }

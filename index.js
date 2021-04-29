@@ -35,14 +35,11 @@ Data.getData().then(result => {
   list.createList(result);
 
   chart.render();
-  console.log(result);
   chart.createChart(
     Object.keys(result.allDataForChart.cases),
     Object.values(result.allDataForChart.cases),
     '#0E53A7',
   );
-
-  console.log(result.allDataForChart);
 
   document.getElementById('control__panel').addEventListener('click', (event) => map.changeMap(result, event.target.getAttribute('id')));
   document.getElementById('control__panel').addEventListener('click', (event) => table.changeTable(result, event.target.getAttribute('id')));

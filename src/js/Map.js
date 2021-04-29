@@ -298,7 +298,6 @@ class Map {
             };
             break;
           default:
-            //     console.log('it is default');
             text = tcc;
             variableToShow = element.TotalConfirmed;
             circleRadius = variableToShow / 10;
@@ -316,9 +315,6 @@ class Map {
         this.group.addLayer(circle);
 
         circle.on('click', function (e) {
-          console.log('event');
-          console.log(e.target);
-          console.log(e.target.options.country);
           table.changeTableViaInput(result, e.target.options.country);
           dom.checkBox.checked = true;
         });
