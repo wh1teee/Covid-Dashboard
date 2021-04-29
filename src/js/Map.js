@@ -343,9 +343,11 @@ class Map {
         labels = ['src/images/ballBlue.png', 'src/images/ballRed.png', 'src/images/ballGreen.png'];
 
       // loop through our density intervals and generate a label with a colored square for each interval
-      for (var i = 0; i < grades.length; i++) {
+      for (let i = 0; i < grades.length; i++) {
         div.innerHTML +=
-          (' <img src=' + labels[i] + ' height=\'20\' width=\'20\'>') + grades[i] + '<br>';
+        `<img src='${labels[i]}' height='20px' width='20' alt='${labels[i]}'>
+        ${grades[i]}
+        <br>`
       }
 
       return div;
