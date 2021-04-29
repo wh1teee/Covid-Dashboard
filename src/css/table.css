@@ -100,13 +100,13 @@ html {
 }
 
 .stat__item {
-    margin: 0.8rem auto;
+    padding: 0.8rem 0;
     cursor: pointer;
     border-bottom: 1px solid #cacaca;
 }
 
 .stat__item.highlighed {
-    background-color: red;
+    background-color: #8d1e1e;
 }
 
 .stat__item img {
