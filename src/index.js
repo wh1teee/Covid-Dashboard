@@ -1,16 +1,15 @@
-import './src/css/style.css';
-import './src/css/table.css';
-import './src/css/keyboard.css';
-import Data from './src/js/Data';
-
-import createDOM from './src/js/DOM';
-import map from './src/js/Map';
-import General from './src/js/General';
-import list from './src/js/List';
-import table from './src/js/Table';
-import chart from './src/js/Chart';
-import renderKeboard from './src/js/keys';
-import listenFullScreenButtons from './src/js/fullscreen';
+import './css/style.css';
+import './css/table.css';
+import './css/keyboard.css';
+import Data from './js/Data';
+import createDOM from './js/DOM';
+import map from './js/Map';
+import General from './js/General';
+import list from './js/List';
+import table from './js/Table';
+import chart from './js/Chart';
+import renderKeboard from './js/keys';
+import listenFullScreenButtons from './js/fullscreen';
 
 createDOM();
 Data.getData();
@@ -20,7 +19,7 @@ const main = document.querySelector('.main');
 main.style.display = 'none';
 main.insertAdjacentHTML('afterend', `
     <div class="loading">
-        <img src="./src/images/spinner.svg" alt="loading...">
+        <img src="src/images/spinner.svg" alt="loading...">
     </div>
 `);
 
