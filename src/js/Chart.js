@@ -1,4 +1,5 @@
-import ChartJS from 'chart.js';
+import ChartJS from 'chart.js/auto';
+import 'chartjs-adapter-moment';
 
 class Chart {
 
@@ -17,24 +18,26 @@ class Chart {
       },
       options: {
         scales: {
-          xAxes: [{
+          gridLines: {
+            display: false,
+          },
+          x: {
             type: 'time',
-            distribution: 'series',
             time: {
               displayFormats: {
-                month: 'MMMM',
+                month: 'MMM YY',
               },
+            },
+            ticks: {
+              autoskip: true,
+              autoSkipPadding: 5,
             },
             gridLines: {
               display: false,
             },
-            ticks: {
-              autoskip: true,
-              autoSkipPadding: 40,
-            },
-          }],
+          },
 
-          yAxes: [{
+          y: {
             ticks: {
               stepSize: 20e6,
               callback: function (value) {
@@ -44,7 +47,7 @@ class Chart {
             gridLines: {
               display: false,
             },
-          }],
+          },
         },
       },
     });
@@ -57,6 +60,11 @@ class Chart {
 
     this.ctx = document.getElementById('chart1').getContext('2d');
   }
+
+  destroy () {
+    this.chart.destroy();
+  }
+
 }
 
 const chart = new Chart();
