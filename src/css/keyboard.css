@@ -1,0 +1,247 @@
+.keyboard {
+    box-sizing: content-box;
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -100%;
+    z-index: 10000;
+    display: flex;
+    flex-wrap: wrap;
+
+    font-family: 'Roboto', sans-serif;
+    border: 1px solid slategrey;
+    padding: 5px;
+    border-radius: 4px;
+    width: 769px;
+
+    background-color: rgba(33, 32, 32, .98);
+    transition: bottom .6s linear;
+}
+
+.key {
+    box-sizing: content-box;
+    float: left;
+    width: 100%;
+
+    max-width: 36px;
+    height: 36px;
+    border: 1px solid slategrey;
+    border-radius: 4px;
+    margin: 3px;
+    padding: 4px;
+    text-align: center;
+    line-height: 32px;
+
+    color: #aab4be;
+}
+
+.key:hover {
+    color: #fff;
+    background: slategrey;
+    cursor: pointer;
+}
+
+.Backspace {
+    width: 100%;
+    max-width: 76px;
+    font-size: 10px;
+    line-height: 100%;
+}
+
+.Tab, .Enter {
+    width: 100%;
+
+    max-width: 56px;
+}
+
+.CapsLock {
+    width: 100%;
+
+    max-width: 127px;
+}
+
+.ShiftRight, .ShiftLeft {
+    width: 100%;
+
+    max-width: 108px;
+}
+
+.ControlLeft, .ControlRight {
+    width: 100%;
+
+    max-width: 83px;
+}
+
+.AltLeft, .AltRight {
+    width: 100%;
+
+    max-width: 83px;
+}
+
+.Space {
+    width: 100%;
+
+    max-width: 356px;
+}
+
+.Listen, .Sound {
+    width: 100%;
+
+    max-width: 53px;
+}
+
+.line1, .line2,
+.line3, .line4,
+.line5 {
+    display: flex;
+}
+
+.active {
+    color: #fff;
+    background: slategrey;
+}
+
+.show {
+    bottom: 20px;
+}
+
+.keyboard__show {
+    position: absolute;
+    right: -2.7rem;
+    top: 0px;
+    width: 2rem;
+    cursor: pointer;
+
+}
+
+.keyboard__show:hover {
+    transform: scale(1.04)
+}
+
+@media (max-width: 800px) {
+
+    .keyboard {
+        width: 530px;
+    }
+
+    .key {
+        max-width: 20px;
+        height: 20px;
+    }
+
+
+    .ControlLeft, .ControlRight {
+        max-width: 55px;
+    }
+
+    .ShiftRight, .ShiftLeft {
+        max-width: 69px;
+    }
+
+    .AltLeft, .AltRight {
+        max-width: 45px;
+    }
+
+    .Backspace {
+        max-width: 46px;
+    }
+
+    .Tab, .Enter {
+        max-width: 33px;
+    }
+
+    .CapsLock {
+        max-width: 81px;
+    }
+
+    .Space {
+        max-width: 250px;
+    }
+}
+
+@media (max-width: 545px) {
+    .keyboard {
+        width: 400px;
+    }
+
+    .key {
+        max-width: 11px;
+        height: 11px;
+        text-align: center;
+        line-height: normal;
+    }
+
+    .Backspace {
+        max-width: 33px;
+        font-size: 7px;
+    }
+
+    .Tab, .Enter {
+        max-width: 22px;
+    }
+
+    .CapsLock {
+        max-width: 60px;
+    }
+
+    .ShiftRight, .ShiftLeft {
+        max-width: 49px;
+    }
+
+    .ControlLeft, .ControlRight {
+        max-width: 34px;
+    }
+
+    .Space {
+        max-width: 181px;
+    }
+
+    .AltLeft, .AltRight {
+        max-width: 35px;
+    }
+}
+
+@media (max-width: 400px) {
+    .keyboard {
+        width: 320px;
+    }
+
+    .key {
+        max-width: 6px;
+        height: 6px;
+        text-align: center;
+        line-height: 1;
+        font-size: 10px;
+    }
+
+    .Backspace {
+        max-width: 18px;
+        font-size: 4px;
+    }
+
+    .Tab, .Enter {
+        max-width: 12px;
+        font-size: 7px;
+    }
+
+    .CapsLock {
+        max-width: 40px;
+        font-size: 9px;
+    }
+
+    .ShiftRight, .ShiftLeft {
+        max-width: 34px;
+    }
+
+    .ControlLeft, .ControlRight {
+        max-width: 25px;
+    }
+
+    .AltLeft, .AltRight {
+        max-width: 28px;
+    }
+
+    .Space {
+        max-width: 134px;
+    }
+}

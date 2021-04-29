@@ -1,0 +1,392 @@
+* {
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 10px;
+}
+
+body {
+    background-color: #222;
+    color: #bdbdbd;
+    margin: 0;
+}
+
+header {
+    text-align: center;
+    padding: 1rem 2rem;
+    font-size: 3rem;
+    color: #e63939;
+    font-weight: 800;
+    display: flex;
+    justify-content: center;
+}
+
+header img {
+    margin: auto 1rem auto 0;
+    width: 2rem;
+    height: 2rem;
+}
+
+header h1 {
+    font-size: 3rem;
+    font-weight: 800;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+main {
+    display: flex;
+    padding: 1rem 2rem;
+    overflow: hidden;
+}
+
+.covid__page {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+}
+
+
+#map {
+    height: 580px;
+    width: 100%;
+}
+
+#map.wide {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: calc(100vh - 100px);
+    z-index: 100;
+}
+
+#aside-left.hide, #aside-right.hide {
+    display: none;
+}
+
+.legend img {
+    margin: 0 0 -0.5rem 0;
+}
+
+#control__panel {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+}
+
+#control__panel button {
+    background-color: #3c3c3c;
+    color: white;
+    border-radius: 0.5rem;
+}
+
+#control__panel button:hover {
+    background-color: white;
+    color: #3c3c3c;
+}
+
+#aside-left {
+    min-width: 20%;
+    padding: 0 1.5rem 0 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+#general0 {
+    text-align: center;
+}
+
+#general0 #global__cases {
+    font-size: 2.3rem;
+    color: red;
+    font-weight: 600;
+    margin-bottom: 2rem;
+}
+
+#general0 #global__cases p {
+    font-size: 2.3rem;
+    font-weight: 400;
+    color: white;
+    margin-top: 0;
+}
+
+#general0 #last__update {
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+#general0 p {
+    margin: 1rem auto;
+}
+
+#aside-right {
+    min-width: 20%;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+#table1 {
+    margin: 0 0 4rem 0;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+#table__panel p#table__title {
+    margin: 0 auto 1rem auto;
+    color: blue;
+    text-align: center;
+    font-size: 2.5rem;
+}
+
+#table__panel p {
+    font-size: 1.8rem;
+    margin: 0.2rem auto;
+}
+
+#table__panel p#show1 {
+    color: #0E53A7;
+}
+
+#table__panel p#show2 {
+    color: #FF5C00;
+}
+
+#table__panel p#show3 {
+    color: #48DD00;
+}
+
+#table__controlpanel {
+    margin: 1rem 0 1rem 0;
+}
+
+#table__controlpanel button {
+    background-color: #3c3c3c;
+    color: white;
+    border-radius: 0.5rem;
+}
+
+#table__controlpanel button:hover {
+    background-color: white;
+    color: #3c3c3c;
+}
+
+#checkbox {
+    font-size: 1rem;
+}
+
+#clear {
+    margin: 1rem 0 0 0;
+}
+
+#table__input {
+    margin: 1rem 0 0 0;
+}
+
+.close__button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 500;
+}
+
+#map3__block {
+    position: relative;
+}
+
+.leaflet-container {
+    background-color: #222;
+}
+
+.chart_div {
+    position: relative;
+}
+
+.table1__block {
+    position: relative;
+}
+
+.full__screen__btn {
+    position: absolute;
+    right: 0.5rem;
+    top: 0.2rem;
+    width: 1.8rem;
+    height: 1.8rem;
+    z-index: 100000;
+    outline: none;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.full__screen__btn:hover {
+    transform: scale(1.064);
+    color: #eaeaea;
+}
+
+.full__screen {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    padding: 0 2rem 0 2rem;
+    background-color: #333;
+    z-index: 1000000;
+
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center
+}
+
+.chart_div {
+    width: 100%;
+    min-height: 250px;
+}
+
+#style-13::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.9);
+    border-radius: 10px;
+    background-color: #333;
+}
+
+#style-13::-webkit-scrollbar {
+    width: 1rem;
+    background-color: #333;
+}
+
+#style-13::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: #D62929;
+    background-image: -webkit-linear-gradient(90deg,
+    transparent,
+    rgba(0, 0, 0, 0.4) 50%,
+    transparent,
+    transparent);
+}
+
+footer {
+    padding: 1rem 2rem;
+    font-size: 1.5rem;
+    text-decoration: none;
+    margin: 3rem auto;
+    text-align: center;
+}
+
+footer a {
+    text-decoration: none;
+    text-align: center;
+    color: white;
+}
+
+footer div {
+    display: flex;
+    justify-content: center;
+    margin: 1rem auto;
+}
+
+footer img {
+    width: 8rem;
+    margin-left: 2rem;
+    filter: invert(1);
+}
+
+footer img.gh {
+    width: 2rem;
+    margin-top: -0.5rem;
+    filter: invert(1);
+}
+
+.loading {
+    text-align: center;
+}
+
+@media (max-width: 1000px) and (min-width: 800px) {
+    main {
+        flex-direction: column;
+    }
+
+    #map3 {
+        order: 3;
+    }
+
+    #aside-left {
+        flex-direction: row;
+    }
+
+    #aside-right {
+        flex-direction: row;
+        margin-top: 4rem;
+    }
+
+    #general0 {
+        margin: 10.5rem 2rem 0 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    #list2 {
+        width: 80%;
+    }
+
+    .header__table {
+        flex-direction: row !important;
+    }
+
+    .sort__block {
+        margin: 1.5rem 0 1.5rem 3rem;
+    }
+
+    #chart4 {
+        width: 100%;
+    }
+
+    #table1 {
+        width: 70%;
+    }
+
+    .table1__block {
+        display: flex;
+        flex-direction: row !important;
+    }
+
+    #clear {
+        position: absolute;
+        bottom: 5rem;
+        right: 1rem;
+    }
+
+    .table1__block label {
+        position: absolute;
+        bottom: 5rem;
+        right: 1rem;
+    }
+
+    #table__controlpanel {
+        width: 50%;
+    }
+}
+
+@media (max-width: 800px) {
+    main {
+        flex-direction: column;
+    }
+
+    #map3 {
+        order: 3;
+    }
+
+    #aside-right {
+        margin-top: 4rem;
+    }
+
+    .keyboard {
+        width: 100%;
+    }
+}
