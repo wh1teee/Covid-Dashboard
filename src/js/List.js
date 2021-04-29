@@ -68,26 +68,15 @@ class List {
   renderTable (chooseSelector) {
     const dom = DOMLinks.getHTMLElements();
     dom.statistic.innerHTML = '';
+
     if (chooseSelector === 'TotalConfirmed') {
-      allData.forEach((item) => {
-        dom.statistic.insertAdjacentHTML('beforeEnd', `
-            <div class='stat__item' id='${item.Country}'><span class="cases">${item.TotalConfirmed}</span>  
-            <span class="name">${item.Country}</span>
-            <span><img src="https://www.countryflags.io/${item.CountryCode}/shiny/16.png"></span>
-            </div>`);
-      });
+      this.insertCountryInTableBySelector(dom.statistic, allData, chooseSelector);
       map.changeMap(allDataFull, '1');
       table.changeTable(allDataFull, '1');
     }
 
     if (chooseSelector === 'TotalRecovered') {
-      allData.forEach((item) => {
-        dom.statistic.insertAdjacentHTML('beforeEnd', `
-            <div class="stat__item"><span class="cases">${item.TotalRecovered}</span>  
-            <span class="name">${item.Country}</span>
-            <span><img src="https://www.countryflags.io/${item.CountryCode}/shiny/16.png"></span>
-            </div>`);
-      });
+      this.insertCountryInTableBySelector(dom.statistic, allData, chooseSelector);
       map.changeMap(allDataFull, '9');
       table.changeTable(allDataFull, '1');
       chart.createChart(
@@ -98,13 +87,7 @@ class List {
     }
 
     if (chooseSelector === 'TotalDeaths') {
-      allData.forEach((item) => {
-        dom.statistic.insertAdjacentHTML('beforeEnd', `
-            <div class="stat__item"><span class="cases">${item.TotalDeaths}</span>  
-            <span class="name">${item.Country}</span>
-            <span><img src="https://www.countryflags.io/${item.CountryCode}/shiny/16.png"></span>
-            </div>`);
-      });
+      this.insertCountryInTableBySelector(dom.statistic, allData, chooseSelector);
       map.changeMap(allDataFull, '5');
       table.changeTable(allDataFull, '1');
       chart.createChart(
@@ -115,117 +98,55 @@ class List {
     }
 
     if (chooseSelector === 'NewRecovered') {
-      allData.forEach((item) => {
-        dom.statistic.insertAdjacentHTML('beforeEnd', `
-            <div class="stat__item"><span class="cases">${item.NewRecovered}</span>  
-            <span class="name">${item.Country}</span>
-            <span><img src="https://www.countryflags.io/${item.CountryCode}/shiny/16.png"></span>
-            </div>`);
-      });
+      this.insertCountryInTableBySelector(dom.statistic, allData, chooseSelector);
       map.changeMap(allDataFull, '11');
       table.changeTable(allDataFull, '3');
     }
 
     if (chooseSelector === 'NewDeaths') {
-      allData.forEach((item) => {
-        dom.statistic.insertAdjacentHTML('beforeEnd', `
-            <div class="stat__item"><span class="cases">${item.NewDeaths}</span>  
-            <span class="name">${item.Country}</span>
-            <span><img src="https://www.countryflags.io/${item.CountryCode}/shiny/16.png"></span>
-            </div>`);
-      });
+      this.insertCountryInTableBySelector(dom.statistic, allData, chooseSelector);
       map.changeMap(allDataFull, '7');
       table.changeTable(allDataFull, '3');
     }
 
     if (chooseSelector === 'NewConfirmed') {
-      allData.forEach((item) => {
-        dom.statistic.insertAdjacentHTML('beforeEnd', `
-            <div class="stat__item"><span class="cases">${item.NewConfirmed}</span>  
-            <span class="name">${item.Country}</span>
-            <span><img src="https://www.countryflags.io/${item.CountryCode}/shiny/16.png"></span>
-            </div>`);
-      });
+      this.insertCountryInTableBySelector(dom.statistic, allData, chooseSelector);
       map.changeMap(allDataFull, '3');
       table.changeTable(allDataFull, '3');
     }
 
     if (chooseSelector === 'TotalConfirmed per 100 thou') {
-
-      allData.forEach((item) => {
-        countryPopulation = allDataFull.resultCountries.find(el => el.alpha2Code === item.CountryCode).population;
-        dom.statistic.insertAdjacentHTML('beforeEnd', `
-            <div class='stat__item' id='${item.Country}'><span class="cases">${Math.ceil(item.TotalConfirmed * 100000 / countryPopulation)}</span>  
-            <span class="name">${item.Country}</span>
-            <span><img src="https://www.countryflags.io/${item.CountryCode}/shiny/16.png"></span>
-            </div>`);
-      });
+      this.insertCountryInTableBySelectorPerThou(dom.statistic, allData, 'TotalConfirmed');
       map.changeMap(allDataFull, '2');
       table.changeTable(allDataFull, '2');
     }
 
     if (chooseSelector === 'TotalRecovered per 100 thou') {
-      allData.forEach((item) => {
-        countryPopulation = allDataFull.resultCountries.find(el => el.alpha2Code === item.CountryCode).population;
-        dom.statistic.insertAdjacentHTML('beforeEnd', `
-            <div class="stat__item"><span class="cases">${Math.ceil(item.TotalRecovered * 100000 / countryPopulation)}</span>  
-            <span class="name">${item.Country}</span>
-            <span><img src="https://www.countryflags.io/${item.CountryCode}/shiny/16.png"></span>
-            </div>`);
-      });
+      this.insertCountryInTableBySelectorPerThou(dom.statistic, allData, 'TotalRecovered');
       map.changeMap(allDataFull, '10');
       table.changeTable(allDataFull, '2');
     }
 
     if (chooseSelector === 'TotalDeaths per 100 thou') {
-
-      allData.forEach((item) => {
-        countryPopulation = allDataFull.resultCountries.find(el => el.alpha2Code === item.CountryCode).population;
-        dom.statistic.insertAdjacentHTML('beforeEnd', `
-            <div class="stat__item"><span class="cases">${Math.ceil(item.TotalDeaths * 100000 / countryPopulation)}</span>  
-            <span class="name">${item.Country}</span>
-            <span><img src="https://www.countryflags.io/${item.CountryCode}/shiny/16.png"></span>
-            </div>`);
-      });
+      this.insertCountryInTableBySelectorPerThou(dom.statistic, allData, 'TotalDeaths');
       map.changeMap(allDataFull, '6');
       table.changeTable(allDataFull, '2');
     }
 
     if (chooseSelector === 'NewRecovered per 100 thou') {
-      allData.forEach((item) => {
-        countryPopulation = allDataFull.resultCountries.find(el => el.alpha2Code === item.CountryCode).population;
-        dom.statistic.insertAdjacentHTML('beforeEnd', `
-            <div class="stat__item"><span class="cases">${Math.ceil(item.NewRecovered * 100000 / countryPopulation)}</span>  
-            <span class="name">${item.Country}</span>
-            <span><img src="https://www.countryflags.io/${item.CountryCode}/shiny/16.png"></span>
-            </div>`);
-      });
+      this.insertCountryInTableBySelectorPerThou(dom.statistic, allData, 'NewRecovered');
       map.changeMap(allDataFull, '12');
       table.changeTable(allDataFull, '4');
     }
 
     if (chooseSelector === 'NewDeaths per 100 thou') {
-      allData.forEach((item) => {
-        countryPopulation = allDataFull.resultCountries.find(el => el.alpha2Code === item.CountryCode).population;
-        dom.statistic.insertAdjacentHTML('beforeEnd', `
-            <div class="stat__item"><span class="cases">${Math.ceil(item.NewDeaths * 100000 / countryPopulation)}</span>  
-            <span class="name">${item.Country}</span>
-            <span><img src="https://www.countryflags.io/${item.CountryCode}/shiny/16.png"></span>
-            </div>`);
-      });
+      this.insertCountryInTableBySelectorPerThou(dom.statistic, allData, 'NewDeaths');
       map.changeMap(allDataFull, '8');
       table.changeTable(allDataFull, '4');
     }
 
     if (chooseSelector === 'NewConfirmed per 100 thou') {
-      allData.forEach((item) => {
-        countryPopulation = allDataFull.resultCountries.find(el => el.alpha2Code === item.CountryCode).population;
-        dom.statistic.insertAdjacentHTML('beforeEnd', `
-            <div class="stat__item"><span class="cases">${Math.ceil(item.NewConfirmed * 100000 / countryPopulation)}</span>  
-            <span class="name">${item.Country}</span>
-            <span><img src="https://www.countryflags.io/${item.CountryCode}/shiny/16.png"></span>
-            </div>`);
-      });
+      this.insertCountryInTableBySelectorPerThou(dom.statistic, allData, 'NewConfirmed');
       map.changeMap(allDataFull, '4');
       table.changeTable(allDataFull, '4');
     }
@@ -280,6 +201,39 @@ class List {
       Object.values(result.allDataForChartCountries.find(item => item.country === country).timeline.cases),
       '#0E53A7',
     );
+  }
+
+  insertCountryInTableBySelector (container, data, selector) {
+    data.forEach(item => {
+      container.insertAdjacentHTML('beforeEnd', `
+            <div class='stat__item' id='${item.Country}'>
+            <span class="cases">${item[selector]}</span>  
+            <span class="name">${item.Country}</span>
+            <span>
+            <img 
+            src="https://flagcdn.com/${item.CountryCode.toLowerCase()}.svg"
+            width="16"
+            alt="${item.Country}">
+            </span>
+            </div>`);
+    });
+  }
+
+  insertCountryInTableBySelectorPerThou (container, data, selector) {
+    data.forEach(item => {
+      countryPopulation = allDataFull.resultCountries.find(el => el.alpha2Code === item.CountryCode).population;
+      container.insertAdjacentHTML('beforeEnd', `
+            <div class="stat__item" id='${item.Country}'>
+            <span class="cases">${Math.ceil(item[selector] * 100000 / countryPopulation)}</span>  
+            <span class="name">${item.Country}</span>
+            <span>
+            <img 
+            src="https://flagcdn.com/${item.CountryCode.toLowerCase()}.svg"
+            width="16"
+            alt="${item.Country}">
+            </span>
+            </div>`);
+    });
   }
 }
 
