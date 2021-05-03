@@ -277,27 +277,31 @@ footer {
     text-align: center;
 }
 
-footer a {
-    text-decoration: none;
-    text-align: center;
-    color: white;
-}
-
 footer div {
     display: flex;
     justify-content: center;
     margin: 1rem auto;
 }
 
-footer img {
-    width: 8rem;
+footer a {
+    text-decoration: none;
+    text-align: center;
+    color: white;
     margin-left: 2rem;
-    filter: invert(1);
 }
 
-footer img.gh {
-    width: 2rem;
-    margin-top: -0.5rem;
+.gh {
+    background-image: url('../images/github_PNG.png');
+    padding-left: 45px;
+    background-size: 35px;
+    background-repeat: no-repeat;
+    background-position: left center;
+    line-height: 45px;
+}
+
+.rsschool__logo {
+    width: 8rem;
+    margin-left: 2rem;
     filter: invert(1);
 }
 
