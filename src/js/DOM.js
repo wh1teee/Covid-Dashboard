@@ -43,13 +43,13 @@ export default function createDOM () {
     </main>
 
     <footer>
-        <img src="src/images/rs_school_js.svg" alt="RSSchool logo">
+        <img class="rsschool__logo" src="src/images/rs_school_js.svg" alt="RSSchool logo">
         <a href="https://rs.school/js/">JavaScript</a>
         <span>2020</span>
         <div>
-            <img class="gh" src="src/images/github_PNG.png" alt="github logo"><a href="https://github.com/mariariazanova">Maria Riazanova</a>
-            <img class="gh" src="src/images/github_PNG.png" alt="github logo"><a href="https://github.com/wh1teee">Kanstantsin Piatrouski</a>
-            <img class="gh" src="src/images/github_PNG.png" alt="github logo"><a href="https://github.com/kohan123">Danila Kokhan</a>
+            <a class="gh gh__link" href="https://github.com/mariariazanova">Maria Riazanova</a>
+            <a class="gh" href="https://github.com/wh1teee">Kanstantsin Piatrouski</a>
+            <a class="gh" href="https://github.com/kohan123">Danila Kohan</a>
         </div>
     </footer>
 </div>`;

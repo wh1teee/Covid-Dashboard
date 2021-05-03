@@ -464,16 +464,6 @@ export default function renderKeboard (size) {
     }
 
   });
-  listenCaps();
-  keyboardListen();
-}
-
-function listenCaps () {
-
-  document.querySelector('.CapsLock').onclick = () => {
-    keysToCaps();
-    isCaps = true;
-  };
 }
 
 function keysToCaps () {
@@ -507,116 +497,103 @@ function find () {
   }
 }
 
-function keyboardListen () {
+function addKeyboardListen () {
+  document.addEventListener('keydown', onkeypress);
+  document.addEventListener('keyup', onKeyUnpressed);
+  document.querySelector('.keyboard').addEventListener('click', onKeyClickedByMouse);
+  document.querySelector('.CapsLock').addEventListener('click', keysToCaps);
+}
 
-  document.body.onkeydown = (e) => {
-    const input = document.querySelector('.input');
-    e.preventDefault();
-    const isFnKey = e.code.match(/Shift|Alt|Backspace|Tab|Caps|Enter|Fn|Control|Listen|Hide|Sound|Meta/);
-    const allKeysDom = document.querySelectorAll('.key');
-    if (!isFnKey) {
+function removeKeyboardListeners () {
+  document.removeEventListener('keydown', onkeypress);
+  document.removeEventListener('keyup', onKeyUnpressed);
+  document.querySelector('.keyboard').removeEventListener('click', onKeyClickedByMouse);
+  document.querySelector('.CapsLock').removeEventListener('click', keysToCaps);
+}
 
-      input.focus();
-      if (isCaps) {
-
-        keys.forEach(key => {
-
-          if (key.small === e.key.toLowerCase()) {
-            input.value += key.shift;
-            find();
-          }
-          if (key.small === e.code) { // for space key
-            input.value += ' ';
-            find();
-          }
-        });
-      } else {
-        keys.forEach(key => {
-          if (key.small === e.key.toLowerCase()) {
-            input.value += key.small;
-            find();
-          }
-          if (key.small === e.code) { // for space key
-            input.value += ' ';
-            find();
-          }
-        });
-      }
-
-    }
-
-    if (e.code === 'Tab') {
-      input.value += `\t`;
-      find();
-    }
-
-    if (e.code === 'CapsLock' || e.key === 'Shift') {
-      keysToCaps();
-      isCaps = true;
-      e.preventDefault();
-    }
-
-    if (e.code === 'Backspace') {
-      const temp = input.value.length === 1 ? '' : input.value.slice(0, -1);
-      input.value = temp;
-      find();
-    }
-
-    allKeysDom.forEach(keyDOM => {
-      if (keyDOM.innerHTML.toLowerCase() === e.key.toLowerCase() || (keyDOM.innerHTML === 'Ctrl' && e.key === 'Control')) {
-        if (!keyDOM.classList.value.includes('active')) {
-          keyDOM.classList.toggle('active');
-        }
-      }
-      if (keyDOM.innerHTML.toLowerCase() === e.code.toLowerCase()) { // for space
-        keyDOM.classList.toggle('active');
-      }
-    });
-  };
-
-  document.body.onkeyup = (e) => {
-    const allKeysDom = document.querySelectorAll('.key');
-
-    if (e.key === 'Shift') {
-      keysToCaps();
-      isCaps = false;
-    }
-
-    allKeysDom.forEach(keyDOM => {
-      if (keyDOM.innerHTML.toLowerCase() === e.key.toLowerCase() && e.key !== 'CapsLock' || (keyDOM.innerHTML === 'Ctrl' && e.key === 'Control')) {
-        keyDOM.classList.toggle('active');
-      }
-      if (keyDOM.innerHTML.toLowerCase() === e.code.toLowerCase()) { // for space
-        keyDOM.classList.toggle('active');
-      }
-    });
-
-  };
-
-  document.querySelector('.keyboard').onclick = (e) => {
-
-    const input = document.querySelector('.input');
+function onkeypress (e) {
+  const isFKey = Boolean(e.key.match(/F[1-9]/gi));
+  if (isFKey) {
+    return;
+  }
+  const input = document.querySelector('.input');
+  const isFnKey = e.code.match(/Shift|Alt|Backspace|Tab|Caps|Enter|Fn|Control|Listen|Hide|Sound|Meta/);
+  const allKeysDom = document.querySelectorAll('.key');
+  if (!isFnKey) {
     input.focus();
-    if (!e.target.innerText.match(/Shift|Alt|Backspace|Tab|Caps|Enter|Fn|Control|Listen|Hide|Sound|Meta/)) {
-      if (e.target.innerText === 'Space') {
-        input.value += ' ';
-        find();
-      } else {
-        input.value += e.target.innerText;
-        find();
+  }
+
+  if (e.code === 'Tab') {
+    input.value += `\t`;
+    find();
+  }
+
+  if (e.code === 'CapsLock') {
+    keysToCaps();
+    e.preventDefault();
+  }
+
+  allKeysDom.forEach(keyDOM => {
+    if (keyDOM.innerHTML.toLowerCase() === e.key.toLowerCase() || (keyDOM.innerHTML === 'Ctrl' && e.key === 'Control')) {
+
+      if (!keyDOM.classList.value.includes('active')) {
+        keyDOM.classList.add('active');
       }
     }
+    if ((keyDOM.innerHTML.toLowerCase() === e.code.toLowerCase())) { // for space
+      if (('space' === e.code.toLowerCase())) {
+        keyDOM.classList.add('active');
+      }
+    }
+  });
+}
 
-    if (e.target.innerText === 'Tab') {
-      input.value += '\t';
+function onKeyUnpressed (e) {
+  const allKeysDom = document.querySelectorAll('.key');
+
+  if (e.key === 'Shift') {
+    keysToCaps();
+    isCaps = false;
+  }
+
+  allKeysDom.forEach(keyDOM => {
+    if (keyDOM.innerHTML.toLowerCase() === e.key.toLowerCase() && e.key !== 'CapsLock' || (keyDOM.innerHTML === 'Ctrl' && e.key === 'Control')) {
+      keyDOM.classList.remove('active');
+    }
+    if (keyDOM.innerHTML.toLowerCase() === e.code.toLowerCase()) { // for space
+      if (('space' === e.code.toLowerCase())) {
+        keyDOM.classList.remove('active');
+      }
+    }
+  });
+}
+
+function onKeyClickedByMouse (e) {
+  const input = document.querySelector('.input');
+  input.focus();
+  if (!e.target.innerText.match(/Shift|Alt|Backspace|Tab|Caps|Enter|Fn|Control|Listen|Hide|Sound|Meta/)) {
+    if (e.target.innerText === 'Space') {
+      input.value += ' ';
+      find();
+    } else {
+      input.value += e.target.innerText;
       find();
     }
-    if (e.target.innerText === 'Backspace') {
-      const temp = input.value.length === 1 ? '' : input.value.slice(0, -1);
-      input.value = temp;
-      find();
-    }
-  };
+  }
+
+  if (e.target.innerText === 'Tab') {
+    input.value += '\t';
+    find();
+  }
+  if (e.target.innerText === 'Backspace') {
+    const temp = input.value.length === 1 ? '' : input.value.slice(0, -1);
+    input.value = temp;
+    find();
+  }
+
+  if (e.target.innerText === 'CapsLock') {
+    keysToCaps();
+  }
 }
 
 export function showKeyboardListen () {
@@ -626,7 +603,11 @@ export function showKeyboardListen () {
   showKeyboardButton.onclick = () => {
     keyboard.classList.toggle('show');
     if (showKeyboardButton.innerHTML === 'keyboard') {
+      addKeyboardListen();
       showKeyboardButton.innerHTML = 'keyboard_hide';
-    } else showKeyboardButton.innerHTML = 'keyboard';
+    } else {
+      removeKeyboardListeners();
+      showKeyboardButton.innerHTML = 'keyboard';
+    }
   };
 }
